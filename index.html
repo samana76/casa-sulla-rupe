@@ -2861,7 +2861,7 @@ lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightb
 const topBtn = document.getElementById('topBtn');
 window.addEventListener('scroll', () => {
   const threshold = window.innerWidth <= 900
-    ? window.innerHeight * 4.5   // mobile: appear after gold stats bar
+    ? window.innerHeight * 3   // mobile: appear after gold stats bar
     : 1000;                       // desktop: after 1000px
   topBtn.classList.toggle('visible', window.scrollY > threshold);
 });
