@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1371,7 +1371,6 @@ footer {
   padding: 4px;
   z-index: 200;
 }
-
 .nav-hamburger span {
   display: block;
   width: 24px;
@@ -1384,11 +1383,8 @@ footer {
 .nav-drawer {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(248,244,238,0.98);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(248,244,238,0.99);
   z-index: 150;
   flex-direction: column;
   align-items: center;
@@ -1398,12 +1394,7 @@ footer {
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
-
-.nav-drawer.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
+.nav-drawer.open { opacity: 1; pointer-events: auto; }
 .nav-drawer a {
   font-family: 'Playfair Display', serif;
   font-size: 28px;
@@ -1411,18 +1402,14 @@ footer {
   color: #1A1410;
   text-decoration: none;
   letter-spacing: 0.04em;
-  transition: color 0.2s;
 }
-
 .nav-drawer a:hover { color: #8B6914; }
-
 .nav-drawer-close {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 24px; right: 24px;
   background: none;
   border: none;
-  font-size: 32px;
+  font-size: 36px;
   color: #1A1410;
   cursor: pointer;
   line-height: 1;
@@ -1435,48 +1422,54 @@ footer {
   .nav-drawer { display: flex; }
 
   .hero-content { padding: 0 24px 60px; grid-template-columns: 1fr; }
-  .hero-right { text-align: left; margin-top: 24px; }
+  .hero-right { text-align: left; margin-top: 20px; }
   .hero-title { font-size: clamp(44px, 12vw, 72px); }
-  .hero-price { font-size: 32px; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .hero-price { font-size: 34px; }
 
   .section-inner, .intro-grid, .floor-grid, .etruscan-inner,
   .contact-inner, .included-inner, .restoration-inner {
     padding: 0 20px;
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
   .floor-grid.reverse { direction: ltr; }
-
-  .floor-images {
-    grid-template-columns: 1fr;
-  }
-  .floor-images .ph-main { height: 240px; }
-  .floor-images .ph-sub { height: 180px; }
+  .floor-images { grid-template-columns: 1fr; }
+  .floor-images .ph-main { height: 220px; }
+  .floor-images .ph-sub { height: 160px; }
 
   .stats-inner { padding: 0 20px; flex-wrap: wrap; gap: 20px; justify-content: center; }
   .stat-divider { display: none; }
-  .stat-item { width: 45%; }
+  .stat-item { min-width: 40%; text-align: center; }
 
   .specs-grid { grid-template-columns: 1fr 1fr; padding: 0 20px; }
-  .spec-card { padding: 20px 16px; }
+  .spec-card { padding: 20px 14px; }
 
-  .photo-trio { grid-template-columns: 1fr; padding: 0 20px; gap: 12px; }
-  .photo-trio img { height: 220px !important; }
+  .photo-trio { grid-template-columns: 1fr; padding: 0 20px; gap: 10px; }
+  .photo-trio img { height: 200px !important; }
   .photo-hero-grid { padding: 0 20px; }
-  .photo-hero-grid img, .photo-hero-grid > div > div { height: 280px !important; }
 
-  .etruscan-images { grid-template-rows: 220px 220px; }
+  .etruscan-images { grid-template-rows: 200px 200px; }
 
-  /* Carousel: 1 slide at a time on mobile */
-  .carousel-slide { min-width: calc(100% - 0px); height: 280px; margin-right: 0; }
+  /* Carousel: 1 slide at a time, no zoom */
   .carousel-wrapper { margin: 0; }
-  .carousel-controls { padding: 0 20px; }
+  .carousel-slide {
+    min-width: 100%;
+    height: auto;
+    margin-right: 0;
+  }
+  .carousel-slide .ph { height: 260px; }
+  .carousel-slide img {
+    height: 260px !important;
+    object-fit: cover !important;
+  }
   .carousel-dots { display: none; }
+  .carousel-controls { padding: 0 20px; }
 
-  .contact-inner { padding: 0 20px; }
-  .price-block { padding: 32px 24px; }
+  .price-block { padding: 28px 20px; }
   .price-main { font-size: 36px; }
+  .contact-inner { padding: 0 20px; }
 
   .intro-grid { padding: 0 20px; }
   .intro-big-text { font-size: 36px; }
@@ -1488,16 +1481,14 @@ footer {
   .gallery-section { padding: 60px 0; }
   .featured-photos { padding: 40px 0; }
   .restoration-section { padding: 60px 0; }
-
   .restoration-inner { padding: 0 20px; }
   .restoration-label { text-align: left; }
 
-  .lightbox-nav.prev { left: -10px; }
-  .lightbox-nav.next { right: -10px; }
+  .lightbox-nav.prev { left: -8px; }
+  .lightbox-nav.next { right: -8px; }
 
   footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 20px; }
-
-  #topBtn { right: 10px; width: 40px; height: 40px; font-size: 22px; }
+  #topBtn { right: 10px; width: 38px; height: 38px; font-size: 20px; }
 }
 
 /* ═══════════════════════════════════════════
@@ -1766,12 +1757,142 @@ footer {
       border-bottom-color: var(--gold);
     }
 
+
+
+/* ═══ LANGUAGE PICKER ═══ */
+#langOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 10, 5, 0.88);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+#langOverlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lang-modal {
+  background: #F8F4EE;
+  padding: 60px 72px;
+  text-align: center;
+  max-width: 480px;
+  width: 90%;
+}
+
+.lang-eyebrow {
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #8B6914;
+  margin-bottom: 14px;
+}
+
+.lang-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #1A1410;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.lang-title em {
+  font-style: italic;
+  color: #8B6914;
+}
+
+.lang-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: #7A6A58;
+  margin-bottom: 40px;
+}
+
+.lang-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #8B6914, transparent);
+  opacity: 0.4;
+  margin-bottom: 40px;
+}
+
+.lang-choices {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.lang-btn {
+  flex: 1;
+  padding: 18px 0;
+  border: 1px solid rgba(139,105,20,0.35);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s;
+  font-family: 'Playfair Display SC', serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: #1A1410;
+}
+
+.lang-btn:hover {
+  background: rgba(139,105,20,0.08);
+  border-color: #8B6914;
+}
+
+.lang-btn .lang-name {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.lang-btn .lang-native {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8B6914;
+}
+
 </style>
 </head>
 <body>
 
 
 <!-- NAV -->
+
+<!-- ═══ LANGUAGE PICKER OVERLAY ═══ -->
+<div id="langOverlay">
+  <div class="lang-modal">
+    <div class="lang-eyebrow">Casa sulla Rupe · Orvieto</div>
+    <h2 class="lang-title">Choose Your<br><em>Language</em></h2>
+    <p class="lang-subtitle">Seleziona la tua lingua</p>
+    <div class="lang-divider"></div>
+    <div class="lang-choices">
+      <button class="lang-btn" onclick="setLanguage('en')">
+        <span class="lang-name">English</span>
+        <span class="lang-native">English</span>
+      </button>
+      <button class="lang-btn" onclick="setLanguage('it')">
+        <span class="lang-name">Italiano</span>
+        <span class="lang-native">Italian</span>
+      </button>
+    </div>
+  </div>
+</div>
+
 <nav id="mainNav">
   <a href="#" class="nav-logo">Casa sulla <span>Rupe</span></a>
   <ul class="nav-links">
@@ -1797,7 +1918,7 @@ footer {
   <a href="#specs" data-key="nav-details" onclick="closeDrawer()">Details</a>
   <a href="#gallery" data-key="nav-gallery" onclick="closeDrawer()">Gallery</a>
   <a href="#contact" data-key="nav-contact" onclick="closeDrawer()">Contact</a>
-  <a href="#" onclick="showLangPicker(); closeDrawer(); return false;" style="font-size:14px;letter-spacing:0.2em;font-family:'Raleway',sans-serif;color:#8B6914;">EN / IT</a>
+  <a href="#" onclick="showLangPicker(); closeDrawer(); return false;" style="font-size:16px;letter-spacing:0.18em;font-family:'Raleway',sans-serif;color:#8B6914;">EN / IT</a>
 </div>
 
 
@@ -1817,37 +1938,37 @@ footer {
   <div class="hero-content">
     <div class="hero-left">
       <div class="hero-eyebrow">
-        <span class="eyebrow">Orvieto · Umbria · Italy</span>
+        <span class="eyebrow" data-key="hero-location">Orvieto · Umbria · Italy</span>
         <span class="hero-eyebrow-line"></span>
-        <span class="eyebrow">UNESCO World Heritage</span>
+        <span class="eyebrow" data-key="hero-unesco">UNESCO World Heritage</span>
       </div>
       <h1 class="hero-title">Casa sulla<br><em>Rupe</em></h1>
-      <p class="hero-subtitle">House on the Rock</p>
+      <p class="hero-subtitle" data-key="hero-subtitle">House on the Rock</p>
       <div class="hero-stats">
         <div>
-          <div class="hero-stat-val">2,336 ft²</div>
-          <div class="hero-stat-lbl">Total Surface</div>
+          <div class="hero-stat-val" data-key="stat-surface-val">2,336 ft²</div>
+          <div class="hero-stat-lbl" data-key="stat-surface-lbl">Total Surface</div>
         </div>
         <div>
           <div class="hero-stat-val">2</div>
-          <div class="hero-stat-lbl">Living Floors</div>
+          <div class="hero-stat-lbl" data-key="stat-floors-lbl">Living Floors</div>
         </div>
         <div>
           <div class="hero-stat-val">1000+</div>
-          <div class="hero-stat-lbl">Years of History</div>
+          <div class="hero-stat-lbl" data-key="stat-history-lbl">Years of History</div>
         </div>
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-price-lbl">Asking Price</div>
-      <div class="hero-price">$690,000</div>
-      <div class="hero-price-sub">€ 600,000 EUR</div>
-      <a href="#contact" class="hero-cta">Request Information</a>
+      <div class="hero-price-lbl" data-key="price-lbl-hero">Asking Price</div>
+      <div class="hero-price" data-key="price-main">$690,000</div>
+      <div class="hero-price-sub" data-key="price-sub">€ 600,000 EUR</div>
+      <a href="#contact" class="hero-cta" data-key="hero-cta">Request Information</a>
     </div>
   </div>
 
   <div class="scroll-indicator">
-    <span>Discover</span>
+    <span data-key="scroll-lbl">Discover</span>
     <div class="scroll-arrow"></div>
   </div>
 </section>
@@ -1856,11 +1977,11 @@ footer {
 <section class="intro-strip">
   <div class="intro-grid fade-in">
     <div class="intro-label-block">
-      <div class="eyebrow">The Property</div>
-      <div class="intro-big-text">Orvieto<br><em>Western</em><br>Cliff</div>
+      <div class="eyebrow" data-key="intro-eyebrow">The Property</div>
+      <div class="intro-big-text" data-key="intro-big">Orvieto<br><em>Western</em><br>Cliff</div>
       <a href="http://www.orvietohouseontherock.com" target="_blank" class="intro-url">www.orvietohouseontherock.com</a>
     </div>
-    <div class="intro-body">
+    <div class="intro-body" data-key="intro-body">
       <p>This stand-alone house sits on the <strong>Western cliff of Orvieto</strong>, free on all four sides. It commands truly stunning panoramic views with breathtaking sunsets, and offers <strong>absolute privacy</strong> — while being just steps from restaurants, cafés, piazzas, and monuments.</p>
       <br>
       <p>Just <strong>50 metres from the 11th-Century Church of San Giovenale</strong>, and a leisurely 10-minute walk from the magnificent Orvieto Cathedral. This is the most coveted panoramic location in the city.</p>
@@ -1874,28 +1995,28 @@ footer {
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat-item">
-      <div class="stat-val">2,336 ft²</div>
-      <div class="stat-lbl">Cadastral Surface</div>
+      <div class="stat-val" data-key="bar-surface-val">2,336 ft²</div>
+      <div class="stat-lbl" data-key="bar-surface-lbl">Cadastral Surface</div>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-item">
       <div class="stat-val">2</div>
-      <div class="stat-lbl">Living Floors</div>
+      <div class="stat-lbl" data-key="bar-floors-lbl">Living Floors</div>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-item">
       <div class="stat-val">50m</div>
-      <div class="stat-lbl">From San Giovenale Church</div>
+      <div class="stat-lbl" data-key="bar-church-lbl">From San Giovenale Church</div>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-item">
-      <div class="stat-val">Turn-Key</div>
-      <div class="stat-lbl">Move-In Ready</div>
+      <div class="stat-val" data-key="bar-turnkey-val">Turn-Key</div>
+      <div class="stat-lbl" data-key="bar-turnkey-lbl">Move-In Ready</div>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-item">
       <div class="stat-val">UNESCO</div>
-      <div class="stat-lbl">World Heritage City</div>
+      <div class="stat-lbl" data-key="bar-unesco-lbl">World Heritage City</div>
     </div>
   </div>
 </div>
@@ -1931,28 +2052,28 @@ footer {
       </div>
     </div>
     <div class="floor-text">
-      <div class="floor-address">Via Volsinia No. 1</div>
-      <h2 class="floor-heading">The Upper<br>Floor</h2>
+      <div class="floor-address" data-key="upper-address">Via Volsinia No. 1</div>
+      <h2 class="floor-heading" data-key="upper-heading">The Upper<br>Floor</h2>
       <div class="room-list">
         <div class="room-item">
-          <div class="room-name">Private Study</div>
-          <div class="room-desc">Upon entry to the left, a private study with a small sofa-bed, desk, and large built-in wall shelving. A quiet retreat within the home.</div>
+          <div class="room-name" data-key="room-study-name">Private Study</div>
+          <div class="room-desc" data-key="room-study-desc">Upon entry to the left, a private study with a small sofa-bed, desk, and large built-in wall shelving. A quiet retreat within the home.</div>
         </div>
         <div class="room-item">
-          <div class="room-name">Central Living Room</div>
-          <div class="room-desc">Beautifully furnished: dining area, couch and arm chair. A built-in electric pizza and roasting oven in the corner. On the wall, a large painting by the renowned Livornese artist <em>Francesco Pelleschi</em>. The French door opens onto a small balcony with a breathtaking view.</div>
+          <div class="room-name" data-key="room-living-name">Central Living Room</div>
+          <div class="room-desc" data-key="room-living-desc">Beautifully furnished: dining area, couch and arm chair. A built-in electric pizza and roasting oven in the corner. On the wall, a large painting by the renowned Livornese artist <em>Francesco Pelleschi</em>. The French door opens onto a small balcony with a breathtaking view.</div>
         </div>
         <div class="room-item">
-          <div class="room-name">Kitchen</div>
-          <div class="room-desc">A well-appointed kitchen leading through a hallway to the bathroom and elegantly furnished bedroom.</div>
+          <div class="room-name" data-key="room-kitchen-name">Kitchen</div>
+          <div class="room-desc" data-key="room-kitchen-desc">A well-appointed kitchen leading through a hallway to the bathroom and elegantly furnished bedroom.</div>
         </div>
         <div class="room-item">
-          <div class="room-name">Bathroom &amp; Bedroom</div>
-          <div class="room-desc">Bathroom with shower and an elegantly furnished bedroom completing the upper level.</div>
+          <div class="room-name" data-key="room-bath-name">Bathroom &amp; Bedroom</div>
+          <div class="room-desc" data-key="room-bath-desc">Bathroom with shower and an elegantly furnished bedroom completing the upper level.</div>
         </div>
       </div>
       <div class="included-note">
-        <div class="eyebrow">Fully Furnished &amp; Equipped</div>
+        <div class="eyebrow" data-key="upper-incl-eyebrow">Fully Furnished &amp; Equipped</div>
         <p>All furnishings, artwork, the painting, a Maiolica large mirror, a full range of appliances, chandeliers, linens, blankets, rugs, and dinnerware are included in the sale price.</p>
       </div>
     </div>
@@ -1963,24 +2084,24 @@ footer {
 <section class="floor-section" id="lower-floor">
   <div class="floor-grid reverse fade-in">
     <div class="floor-text">
-      <div class="floor-address">Via del Caccia No. 9</div>
-      <h2 class="floor-heading">The Lower<br>Floor</h2>
+      <div class="floor-address" data-key="lower-address">Via del Caccia No. 9</div>
+      <h2 class="floor-heading" data-key="lower-heading">The Lower<br>Floor</h2>
       <div class="room-list">
         <div class="room-item">
-          <div class="room-name">Grand Central Hall</div>
-          <div class="room-desc">Twice the size of the upper floor. Beautiful marble floor, vaulted ceilings with crossing arches. Recessed lighting, two iron chandeliers, and a raised putti terracotta fountain in working condition. The hall is surrounded on two sides by marble stands.</div>
+          <div class="room-name" data-key="room-hall-name">Grand Central Hall</div>
+          <div class="room-desc" data-key="room-hall-desc">Twice the size of the upper floor. Beautiful marble floor, vaulted ceilings with crossing arches. Recessed lighting, two iron chandeliers, and a raised putti terracotta fountain in working condition. The hall is surrounded on two sides by marble stands.</div>
         </div>
         <div class="room-item">
-          <div class="room-name">Mezzanine Bedroom</div>
-          <div class="room-desc">A charming mezzanine set up as a bedroom with its own bathroom below. Accessed via the internal staircase or the main door on Via del Caccia.</div>
+          <div class="room-name" data-key="room-mezz-name">Mezzanine Bedroom</div>
+          <div class="room-desc" data-key="room-mezz-desc">A charming mezzanine set up as a bedroom with its own bathroom below. Accessed via the internal staircase or the main door on Via del Caccia.</div>
         </div>
         <div class="room-item">
-          <div class="room-name">Tuff Arch Kitchen Area</div>
-          <div class="room-desc">A natural tuff arch with an area that could be used as a second kitchen — plumbing already in place.</div>
+          <div class="room-name" data-key="room-tuff-name">Tuff Arch Kitchen Area</div>
+          <div class="room-desc" data-key="room-tuff-desc">A natural tuff arch with an area that could be used as a second kitchen — plumbing already in place.</div>
         </div>
         <div class="room-item">
-          <div class="room-name">Etruscan Inscription</div>
-          <div class="room-desc">A small Etruscan inscription on one of the walls dates the area to several centuries BC — a living connection to the ancient world.</div>
+          <div class="room-name" data-key="room-inscr-name">Etruscan Inscription</div>
+          <div class="room-desc" data-key="room-inscr-desc">A small Etruscan inscription on one of the walls dates the area to several centuries BC — a living connection to the ancient world.</div>
         </div>
       </div>
     </div>
@@ -2002,10 +2123,10 @@ footer {
 <section class="etruscan-section" id="etruscan">
   <div class="etruscan-inner fade-in">
     <div class="etruscan-text">
-      <div class="eyebrow">Ancient Heritage</div>
-      <h2 class="etruscan-title">The <em>Etruscan</em><br>Quarry</h2>
-      <div class="etruscan-quote">"Beneath this floor, a large square quarry cut by the Etruscans reaches all the way to the bottom of the cliff."</div>
-      <p class="etruscan-body">Part of the quarry, along with several ancient cisterns, have been emptied, illuminated, and made fully accessible. The tuff walls throughout have been hand-chiseled and treated with a breathable fixative, preserving their raw historic character.<br><br>The restoration and excavation work was carried out following strict historical criteria, ensuring that the ancient fabric of the building is honored in every detail.</p>
+      <div class="eyebrow" data-key="etruscan-eyebrow">Ancient Heritage</div>
+      <h2 class="etruscan-title" data-key="etruscan-title">The <em>Etruscan</em><br>Quarry</h2>
+      <div class="etruscan-quote" data-key="etruscan-quote">"Beneath this floor, a large square quarry cut by the Etruscans reaches all the way to the bottom of the cliff."</div>
+      <p class="etruscan-body" data-key="etruscan-body">Part of the quarry, along with several ancient cisterns, have been emptied, illuminated, and made fully accessible. The tuff walls throughout have been hand-chiseled and treated with a breathable fixative, preserving their raw historic character.<br><br>The restoration and excavation work was carried out following strict historical criteria, ensuring that the ancient fabric of the building is honored in every detail.</p>
     </div>
     <div class="etruscan-images">
       <div class="ph" style="height:260px;">
@@ -2023,51 +2144,51 @@ footer {
   <div class="section-inner">
     <div class="section-header fade-in">
       <div class="section-header-text">
-        <div class="eyebrow">Property Details</div>
-        <h2 class="section-heading">Technical<br>Specifications</h2>
+        <div class="eyebrow" data-key="specs-eyebrow">Property Details</div>
+        <h2 class="section-heading" data-key="specs-heading">Technical<br>Specifications</h2>
       </div>
     </div>
   </div>
   <div class="specs-grid fade-in">
     <div class="spec-card">
       <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      <div class="spec-lbl">Property Type</div>
-      <div class="spec-val">Stand-alone · Free on all four sides</div>
+      <div class="spec-lbl" data-key="spec-type-lbl">Property Type</div>
+      <div class="spec-val" data-key="spec-type-val">Stand-alone · Free on all four sides</div>
     </div>
     <div class="spec-card">
       <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
-      <div class="spec-lbl">Cadastral Surface</div>
-      <div class="spec-val">2,336 ft²</div>
+      <div class="spec-lbl" data-key="spec-surface-lbl">Cadastral Surface</div>
+      <div class="spec-val" data-key="spec-surface-val">2,336 ft²</div>
     </div>
     <div class="spec-card">
       <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22V8M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M12 8c-4 0-4-4 0-4s4 4 0 4z"/></svg>
-      <div class="spec-lbl">Heating</div>
-      <div class="spec-val">Two independent systems</div>
+      <div class="spec-lbl" data-key="spec-heating-lbl">Heating</div>
+      <div class="spec-val" data-key="spec-heating-val">Two independent systems</div>
     </div>
     <div class="spec-card">
       <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
-      <div class="spec-lbl">Living Floors</div>
-      <div class="spec-val">Two + Etruscan quarry below</div>
+      <div class="spec-lbl" data-key="spec-floors-lbl">Living Floors</div>
+      <div class="spec-val" data-key="spec-floors-val">Two + Etruscan quarry below</div>
     </div>
     <div class="spec-card">
       <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-      <div class="spec-lbl">Condition</div>
-      <div class="spec-val">Turn-key · Ready from day one</div>
+      <div class="spec-lbl" data-key="spec-cond-lbl">Condition</div>
+      <div class="spec-val" data-key="spec-cond-val">Turn-key · Ready from day one</div>
     </div>
     <div class="spec-card">
       <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-      <div class="spec-lbl">Climate Control</div>
-      <div class="spec-val">A/C upper · Dehumidifier lower</div>
+      <div class="spec-lbl" data-key="spec-climate-lbl">Climate Control</div>
+      <div class="spec-val" data-key="spec-climate-val">A/C upper · Dehumidifier lower</div>
     </div>
     <div class="spec-card">
       <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
-      <div class="spec-lbl">Seismic Standard</div>
-      <div class="spec-val">Roof &amp; walls reinforced, steel beams</div>
+      <div class="spec-lbl" data-key="spec-seismic-lbl">Seismic Standard</div>
+      <div class="spec-val" data-key="spec-seismic-val">Roof &amp; walls reinforced, steel beams</div>
     </div>
     <div class="spec-card">
       <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <div class="spec-lbl">Location</div>
-      <div class="spec-val">Orvieto, Umbria · UNESCO Heritage</div>
+      <div class="spec-lbl" data-key="spec-loc-lbl">Location</div>
+      <div class="spec-val" data-key="spec-loc-val">Orvieto, Umbria · UNESCO Heritage</div>
     </div>
   </div>
 </section>
@@ -2076,28 +2197,28 @@ footer {
 <section class="restoration-section">
   <div class="restoration-inner fade-in">
     <div class="restoration-label">
-      <div class="eyebrow" style="text-align:right; margin-bottom:12px;">Designed By</div>
-      <h3 class="restoration-title">Master<br><em>Architects</em></h3>
+      <div class="eyebrow" style="text-align:right; margin-bottom:12px;" data-key="rest-eyebrow">Designed By</div>
+      <h3 class="restoration-title" data-key="rest-title">Master<br><em>Architects</em></h3>
     </div>
     <div>
-      <p style="font-size:13.5px; color:var(--cream-mid); margin-bottom:28px; line-height:1.8;">The restoration, excavation and reconstruction was carried out following strict historical criteria by three distinguished professionals.</p>
+      <p style="font-size:13.5px; color:var(--cream-mid); margin-bottom:28px; line-height:1.8;" data-key="rest-body">The restoration, excavation and reconstruction was carried out following strict historical criteria by three distinguished professionals.</p>
       <div class="architect-list">
         <div class="architect">
           <div>
             <div class="architect-name">Steve Farneth, FAIA</div>
-            <div class="architect-role">Architect · San Francisco, California</div>
+            <div class="architect-role" data-key="arch-farneth-role">Architect · San Francisco, California</div>
           </div>
         </div>
         <div class="architect">
           <div>
             <div class="architect-name">Gianfranco Pigozzi</div>
-            <div class="architect-role">Architect · Orvieto, Umbria</div>
+            <div class="architect-role" data-key="arch-pigozzi-role">Architect · Orvieto, Umbria</div>
           </div>
         </div>
         <div class="architect">
           <div>
             <div class="architect-name">Marco Pelucchi</div>
-            <div class="architect-role">Surveyor (Geometra)</div>
+            <div class="architect-role" data-key="arch-pelucchi-role">Surveyor (Geometra)</div>
           </div>
         </div>
       </div>
@@ -2110,24 +2231,24 @@ footer {
   <div class="section-inner" style="margin-bottom:56px;">
     <div class="section-header fade-in">
       <div class="section-header-text">
-        <div class="eyebrow">Acquisition</div>
-        <h2 class="section-heading">Price &amp;<br>Contact</h2>
+        <div class="eyebrow" data-key="contact-eyebrow">Acquisition</div>
+        <h2 class="section-heading" data-key="contact-heading">Price &amp;<br>Contact</h2>
       </div>
     </div>
   </div>
   <div class="contact-inner fade-in">
     <div class="price-block">
-      <div class="price-lbl">Asking Price</div>
-      <div class="price-main">$690,000</div>
-      <div class="price-sub">€ 600,000 EUR</div>
-      <div class="price-note">Or higher offer accepted</div>
+      <div class="price-lbl" data-key="price-lbl">Asking Price</div>
+      <div class="price-main" data-key="price-main">$690,000</div>
+      <div class="price-sub" data-key="price-sub">€ 600,000 EUR</div>
+      <div class="price-note" data-key="price-note">Or higher offer accepted</div>
       <div class="price-divider"></div>
-      <div class="price-include-lbl">Fully Included in Sale</div>
-      <div class="price-include-txt">All furnishings, artwork, appliances (refrigerator, oven, dishwasher, washing machine &amp; dryer), chandeliers, linens, blankets, rugs, and dinnerware.</div>
-      <a href="mailto:piacerecasa@gmail.com,saviogia@gmail.com" class="cta-btn">Inquire About This Property</a>
+      <div class="price-include-lbl" data-key="price-incl-lbl">Fully Included in Sale</div>
+      <div class="price-include-txt" data-key="price-incl-txt">All furnishings, artwork, appliances (refrigerator, oven, dishwasher, washing machine &amp; dryer), chandeliers, linens, blankets, rugs, and dinnerware.</div>
+      <a href="mailto:piacerecasa@gmail.com,saviogia@gmail.com" class="cta-btn" data-key="contact-cta">Inquire About This Property</a>
     </div>
     <div class="agent-block">
-      <div class="eyebrow" style="margin-bottom:20px;">Real Estate Agency</div>
+      <div class="eyebrow" style="margin-bottom:20px;" data-key="agent-eyebrow">Real Estate Agency</div>
       <div class="agent-agency">Piacere Casa</div>
       <div class="agent-name">Massimo<br>Ceccantoni</div>
       <div class="agent-info-row">
@@ -2144,9 +2265,9 @@ footer {
       </div>
       <div class="agent-info-row">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <div class="agent-info-text">Piazza Ascanio Vitozzi 5<br>05018 Orvieto (TR) · Italy</div>
+        <div class="agent-info-text" data-key="agent-address">Piazza Ascanio Vitozzi 5<br>05018 Orvieto (TR) · Italy</div>
       </div>
-      <div class="registry-note">
+      <div class="registry-note" data-key="registry-note">
         Registry (Visura) — Comune di Orvieto · No.: TI76549<br>
         Catasto Fabbricati — Sheet 181, Parcel 116, Sub. 1<br>
         Cadastral surface: 2,336 ft² (217 m²)<br>
@@ -2161,264 +2282,254 @@ footer {
   <div class="section-inner">
     <div class="section-header fade-in">
       <div class="section-header-text">
-        <div class="eyebrow">Photography</div>
-        <h2 class="section-heading">Photo<br>Gallery</h2>
+        <div class="eyebrow" data-key="gallery-eyebrow">Photography</div>
+        <h2 class="section-heading" data-key="gallery-heading">Photo<br>Gallery</h2>
       </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════
-       HOW TO ADD YOUR PHOTOS TO THE GALLERY:
-       1. Each .carousel-slide is one photo.
-       2. Replace the .ph div inside it with:
-          <img src="your-photo.jpg" alt="Caption" style="width:100%;height:100%;object-fit:cover;display:block;">
-       3. Update the data-caption attribute on .carousel-slide.
-       4. Add as many slides as you like — the JS handles the rest.
-       5. The lightbox will show a larger version when clicked.
-  ══════════════════════════════════════════ -->
-
   <div class="carousel-wrapper">
     <div class="carousel-track" id="carouselTrack">
 
-      <div class="carousel-slide" data-caption="Exterior — Western Cliff Facade" data-index="0">
+      <div class="carousel-slide" data-caption="Aerial View" data-index="0">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Aerial_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center bottom;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Panoramic View from Balcony" data-index="1">
+      <div class="carousel-slide" data-caption="Aerial View — Western Cliff Facade" data-index="1">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Aerial_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Central Living Room" data-index="2">
+      <div class="carousel-slide" data-caption="Aerial View" data-index="2">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Aerial_3.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center center;object-position: center bottom;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Grand Central Hall — Lower Floor" data-index="3">
+      <div class="carousel-slide" data-caption="Street View — Western Cliff Facade" data-index="3">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Cliff.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Vaulted Ceilings & Crossing Arches" data-index="4">
+      <div class="carousel-slide" data-caption="Aerial View - Western Entrance" data-index="4">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Exterior_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center bottom;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Terracotta Fountain — Putti Relief" data-index="5">
+      <div class="carousel-slide" data-caption="Street View - Western Entrance" data-index="5">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Exterior_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Etruscan Quarry Below" data-index="6">
+      <div class="carousel-slide" data-caption="Street View - North West Corner" data-index="6">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Exterior_3.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Kitchen & Dining" data-index="7">
+      <div class="carousel-slide" data-caption="Aerial View - North Wall" data-index="7">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Exterior_4.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Bedroom — Upper Floor" data-index="8">
+      <div class="carousel-slide" data-caption="Street View - North Wall" data-index="8">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Exterior_5.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Street View - South East Entrance" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Exterior_6.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Exterior — Western Cliff Facade" data-index="0">
+      <div class="carousel-slide" data-caption="Ground Floor - Western Entrance" data-index="0">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Entrance_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Panoramic View from Balcony" data-index="1">
+      <div class="carousel-slide" data-caption="Top of stairs - Livingroom" data-index="1">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Livingroom_4.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 70%;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Central Living Room" data-index="2">
+      <div class="carousel-slide" data-caption="Livingroom - view of eastern entrance" data-index="2">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Livingroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Grand Central Hall — Lower Floor" data-index="3">
+      <div class="carousel-slide" data-caption="Livingroom - dining area" data-index="3">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Livingroom_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Vaulted Ceilings & Crossing Arches" data-index="4">
+      <div class="carousel-slide" data-caption="Livingroom - western view" data-index="4">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Livingroom_3.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Vaulted Ceilings & Crossing Arches" data-index="4">
+      <div class="carousel-slide" data-caption="Livingroom - pizza oven" data-index="4">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Pizza_oven.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Terracotta Fountain — Putti Relief" data-index="5">
+      <div class="carousel-slide" data-caption="Liginroom - balcony view" data-index="5">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Livingroom_Balcony_View.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Etruscan Quarry Below" data-index="6">
+      <div class="carousel-slide" data-caption="Kitchen" data-index="6">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Kitchen_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Kitchen & Dining" data-index="7">
+      <div class="carousel-slide" data-caption="Kitchen - South view" data-index="7">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Kitchen_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Bedroom — Upper Floor" data-index="8">
+      <div class="carousel-slide" data-caption="Hallway" data-index="8">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Corridor.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Master Bedroom" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Master_Bedroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Master Bedroom" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Master_Bedroom_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Bedroom — Upper Floor" data-index="8">
+      <div class="carousel-slide" data-caption="Bathroom" data-index="8">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Upper_Bathroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="Bedroom — Upper Floor" data-index="8">
+      <div class="carousel-slide" data-caption="Studio/Guestroom" data-index="8">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Studio_Guest_Room.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Western Entrance" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Entrance_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Vaulted Ceilings & Crossing Arches" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Great_Hall_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Vaulted Ceilings & Crossing Arches" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Great_Hall_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Second Bedroom" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Second_Bedroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Second Bedroom" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Second_Bedroom_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Terracotta Fountain — Putti Relief" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Terracotta_Fountain.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 35%;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Corner view of second bathroom door and closet"" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Lower_Level_Corner.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 30%;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Second Bathroom" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Lower_Bathroom.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 30%;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Wine Cellar" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Wine_cellar.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 70%;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Staircase to Etruscan Quarry" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Entrance_to_Etruscan_Cave.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 70%;display:block;">
         </div>
         <div class="slide-overlay"></div>
       </div>
 
-      <div class="carousel-slide" data-caption="San Giovenale Church — 50m Away" data-index="9">
+      <div class="carousel-slide" data-caption="Etruscan Quarry" data-index="9">
         <div class="ph" style="width:100%;height:100%;">
           <img src="Photo_Gallery/Grotto.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 70%;display:block;">
         </div>
@@ -2462,29 +2573,25 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Casa sulla <span>Rupe</span> · Orvieto</div>
-  <div class="footer-reg">
+  <div class="footer-reg" data-key="footer-reg">
     VISURA — Comune di Orvieto · No. TI76549 · Foglio 181, Particella 116, Sub. 1<br>
     Surface 2,336 ft² · Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y
   </div>
-  <div class="footer-lang">
-    <a href="site_it_light.html">Versione Italiana →</a>
+  <div class="footer-lang" data-key="footer-lang">
+    <a href="#" onclick="showLangPicker(); return false;">Change Language / Cambia Lingua</a>
   </div>
 </footer>
 
 <script>
-/* ═══ NAV HAMBURGER ═══ */
+/* ═══ HAMBURGER MENU ═══ */
 function closeDrawer() {
-  const drawer = document.getElementById('navDrawer');
-  drawer.classList.remove('open');
+  document.getElementById('navDrawer').classList.remove('open');
   document.body.style.overflow = '';
 }
-
 document.getElementById('hamburgerBtn').addEventListener('click', () => {
-  const drawer = document.getElementById('navDrawer');
-  drawer.classList.add('open');
+  document.getElementById('navDrawer').classList.add('open');
   document.body.style.overflow = 'hidden';
 });
-
 document.getElementById('drawerClose').addEventListener('click', closeDrawer);
 
 /* ═══ NAV ═══ */
@@ -2719,5 +2826,241 @@ window.addEventListener('scroll', () => {
 });
 </script>
 
+
+<script>
+
+/* ═══ TRANSLATIONS ═══ */
+const TRANSLATIONS = {
+  en: {
+    'nav-upper': 'Upper Floor',
+    'nav-lower': 'Lower Floor',
+    'nav-heritage': 'Heritage',
+    'nav-details': 'Details',
+    'nav-gallery': 'Gallery',
+    'nav-contact': 'Contact',
+    'hero-location': 'Orvieto · Umbria · Italy',
+    'hero-unesco': 'UNESCO World Heritage',
+    'hero-subtitle': 'House on the Rock',
+    'stat-surface-lbl': 'Total Surface',
+    'stat-surface-val': '2,336 ft²',
+    'stat-floors-lbl': 'Living Floors',
+    'stat-history-lbl': 'Years of History',
+    'price-lbl-hero': 'Asking Price',
+    'price-main': '$690,000',
+    'price-sub': '€ 600,000 EUR',
+    'hero-cta': 'Request Information',
+    'scroll-lbl': 'Discover',
+    'intro-eyebrow': 'The Property',
+    'intro-big': 'Orvieto<br><em>Western</em><br>Cliff',
+    'intro-body': '<p>This stand-alone house sits on the <strong>Western cliff of Orvieto</strong>, free on all four sides. It commands truly stunning panoramic views with breathtaking sunsets, and offers <strong>absolute privacy</strong> — while being just steps from restaurants, cafés, piazzas, and monuments.</p><br><p>Just <strong>50 metres from the 11th-Century Church of San Giovenale</strong>, and a leisurely 10-minute walk from the magnificent Orvieto Cathedral. This is the most coveted panoramic location in the city.</p><br><p>A home in <strong>perfect condition</strong>, ready to be lived in from day one — or offered for short-term rental on Airbnb and VRBO, as it currently operates.</p>',
+    'bar-surface-val': '2,336 ft²',
+    'bar-surface-lbl': 'Cadastral Surface',
+    'bar-floors-lbl': 'Living Floors',
+    'bar-church-lbl': 'From San Giovenale Church',
+    'bar-turnkey-val': 'Turn-Key',
+    'bar-turnkey-lbl': 'Move-In Ready',
+    'bar-unesco-lbl': 'World Heritage City',
+    'upper-address': 'Via Volsinia No. 1',
+    'upper-heading': 'The Upper<br>Floor',
+    'room-study-name': 'Private Study',
+    'room-study-desc': 'Upon entry to the left, a private study with a small sofa-bed, desk, and large built-in wall shelving. A quiet retreat within the home.',
+    'room-living-name': 'Central Living Room',
+    'room-living-desc': 'Beautifully furnished: dining area, couch and arm chair. A built-in electric pizza and roasting oven in the corner. On the wall, a large painting by the renowned Livornese artist <em>Francesco Pelleschi</em>. The French door opens onto a small balcony with a breathtaking view.',
+    'room-kitchen-name': 'Kitchen',
+    'room-kitchen-desc': 'A well-appointed kitchen leading through a hallway to the bathroom and elegantly furnished bedroom.',
+    'room-bath-name': 'Bathroom &amp; Bedroom',
+    'room-bath-desc': 'Bathroom with shower and an elegantly furnished bedroom completing the upper level.',
+    'upper-incl-eyebrow': 'Fully Furnished &amp; Equipped',
+    'lower-address': 'Via del Caccia No. 9',
+    'lower-heading': 'The Lower<br>Floor',
+    'room-hall-name': 'Grand Central Hall',
+    'room-hall-desc': 'Twice the size of the upper floor. Beautiful marble floor, vaulted ceilings with crossing arches. Recessed lighting, two iron chandeliers, and a raised putti terracotta fountain in working condition. The hall is surrounded on two sides by marble stands.',
+    'room-mezz-name': 'Mezzanine Bedroom',
+    'room-mezz-desc': 'A charming mezzanine set up as a bedroom with its own bathroom below. Accessed via the internal staircase or the main door on Via del Caccia.',
+    'room-tuff-name': 'Tuff Arch Kitchen Area',
+    'room-tuff-desc': 'A natural tuff arch with an area that could be used as a second kitchen — plumbing already in place.',
+    'room-inscr-name': 'Etruscan Inscription',
+    'room-inscr-desc': 'A small Etruscan inscription on one of the walls dates the area to several centuries BC — a living connection to the ancient world.',
+    'etruscan-eyebrow': 'Ancient Heritage',
+    'etruscan-title': 'The <em>Etruscan</em><br>Quarry',
+    'etruscan-quote': '"Beneath this floor, a large square quarry cut by the Etruscans reaches all the way to the bottom of the cliff."',
+    'etruscan-body': 'Part of the quarry, along with several ancient cisterns, have been emptied, illuminated, and made fully accessible. The tuff walls throughout have been hand-chiseled and treated with a breathable fixative, preserving their raw historic character.<br><br>The restoration and excavation work was carried out following strict historical criteria, ensuring that the ancient fabric of the building is honored in every detail.',
+    'specs-eyebrow': 'Property Details',
+    'specs-heading': 'Technical<br>Specifications',
+    'spec-type-lbl': 'Property Type',
+    'spec-type-val': 'Stand-alone · Free on all four sides',
+    'spec-surface-lbl': 'Cadastral Surface',
+    'spec-surface-val': '2,336 ft²',
+    'spec-heating-lbl': 'Heating',
+    'spec-heating-val': 'Two independent systems',
+    'spec-floors-lbl': 'Living Floors',
+    'spec-floors-val': 'Two + Etruscan quarry below',
+    'spec-cond-lbl': 'Condition',
+    'spec-cond-val': 'Turn-key · Ready from day one',
+    'spec-climate-lbl': 'Climate Control',
+    'spec-climate-val': 'A/C upper · Dehumidifier lower',
+    'spec-seismic-lbl': 'Seismic Standard',
+    'spec-seismic-val': 'Roof &amp; walls reinforced, steel beams',
+    'spec-loc-lbl': 'Location',
+    'spec-loc-val': 'Orvieto, Umbria · UNESCO Heritage',
+    'rest-eyebrow': 'Designed By',
+    'rest-title': 'Master<br><em>Architects</em>',
+    'rest-body': 'The restoration, excavation and reconstruction was carried out following strict historical criteria by three distinguished professionals.',
+    'arch-farneth-role': 'Architect · San Francisco, California',
+    'arch-pigozzi-role': 'Architect · Orvieto, Umbria',
+    'arch-pelucchi-role': 'Surveyor (Geometra)',
+    'contact-eyebrow': 'Acquisition',
+    'contact-heading': 'Price &amp;<br>Contact',
+    'price-lbl': 'Asking Price',
+    'price-note': 'Or higher offer accepted',
+    'price-incl-lbl': 'Fully Included in Sale',
+    'price-incl-txt': 'All furnishings, artwork, appliances (refrigerator, oven, dishwasher, washing machine &amp; dryer), chandeliers, linens, blankets, rugs, and dinnerware.',
+    'contact-cta': 'Inquire About This Property',
+    'agent-eyebrow': 'Real Estate Agency',
+    'agent-address': 'Piazza Ascanio Vitozzi 5<br>05018 Orvieto (TR) · Italy',
+    'registry-note': 'Registry (Visura) — Comune di Orvieto · No.: TI76549<br>Catasto Fabbricati — Sheet 181, Parcel 116, Sub. 1<br>Cadastral surface: 2,336 ft² (217 m²)<br>Owner: SAVIO Giovanni · Tax Code: SVAGNN41L25H710Y',
+    'gallery-eyebrow': 'Photography',
+    'gallery-heading': 'Photo<br>Gallery',
+    'footer-reg': 'VISURA — Comune di Orvieto · No. TI76549 · Foglio 181, Particella 116, Sub. 1<br>Surface 2,336 ft² · Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y',
+    'footer-lang': '<a href="#" onclick="showLangPicker(); return false;">Cambia Lingua / Change Language</a>',
+  },
+  it: {
+    'nav-upper': 'Piano Superiore',
+    'nav-lower': 'Piano Inferiore',
+    'nav-heritage': 'Patrimonio',
+    'nav-details': 'Dettagli',
+    'nav-gallery': 'Galleria',
+    'nav-contact': 'Contatto',
+    'hero-location': 'Orvieto · Umbria · Italia',
+    'hero-unesco': 'Patrimonio UNESCO',
+    'hero-subtitle': 'La Casa sulla Rupe',
+    'stat-surface-lbl': 'Superficie Totale',
+    'stat-surface-val': '217 m²',
+    'stat-floors-lbl': 'Piani Abitativi',
+    'stat-history-lbl': 'Anni di Storia',
+    'price-lbl-hero': 'Prezzo Richiesto',
+    'price-main': '€ 600.000',
+    'price-sub': '$ 690,000 USD',
+    'hero-cta': 'Richiedi Informazioni',
+    'scroll-lbl': 'Scopri',
+    'intro-eyebrow': "L'Immobile",
+    'intro-big': 'Orvieto<br><em>Rupe</em><br>Ovest',
+    'intro-body': '<p>Questa casa indipendente si erge sulla <strong>Rupe occidentale di Orvieto</strong>, libera su quattro lati. Offre panorami straordinari con tramonti e vedute mozzafiato e <strong>assoluta privacy</strong> — a poca distanza da ristoranti, caffè, piazze e monumenti.</p><br><p>A soli <strong>50 metri dalla bellissima chiesa di San Giovenale dell\'XI Secolo</strong> e a 10 minuti a piedi dalla magnifica Cattedrale di Orvieto. La zona panoramica per eccellenza della città.</p><br><p>Una casa in <strong>perfette condizioni</strong>, pronta per essere vissuta fin dal primo giorno — o proposta per affitti a breve termine su Airbnb e VRBO, come già avviene.</p>',
+    'bar-surface-val': '217 m²',
+    'bar-surface-lbl': 'Superficie Catastale',
+    'bar-floors-lbl': 'Piani Abitativi',
+    'bar-church-lbl': 'Da San Giovenale',
+    'bar-turnkey-val': 'Chiavi in Mano',
+    'bar-turnkey-lbl': 'Pronta dal Primo Giorno',
+    'bar-unesco-lbl': "Patrimonio dell'Umanità",
+    'upper-address': 'Via Volsinia N. 1',
+    'upper-heading': 'Il Piano<br>Superiore',
+    'room-study-name': 'Studio Privato',
+    'room-study-desc': "Sulla sinistra all'ingresso, studio privato con divano, scrivania e un'ampia scaffalatura a muro integrata.",
+    'room-living-name': 'Salone Centrale',
+    'room-living-desc': 'Arredato con gusto: tavolo, sedie, scaffali, divano e poltrona. Forno elettrico per pizza e arrosti in un angolo. Sul muro principale, il grande dipinto del celebre artista livornese <em>Francesco Pelleschi</em>. La porta-finestra dà su un piccolo balcone con panorama stupendo.',
+    'room-kitchen-name': 'Cucina',
+    'room-kitchen-desc': 'Cucina attrezzata che attraverso un corridoio conduce al bagno e alla camera da letto.',
+    'room-bath-name': 'Bagno e Camera da Letto',
+    'room-bath-desc': 'Bagno con doccia e camera da letto ben arredata, che completano il piano superiore.',
+    'upper-incl-eyebrow': 'Completamente Arredato e Attrezzato',
+    'lower-address': 'Via del Caccia N. 9',
+    'lower-heading': 'Il Piano<br>Inferiore',
+    'room-hall-name': 'Grande Salone Centrale',
+    'room-hall-desc': 'Il doppio dello spazio del piano superiore. Pavimentazione in marmo, soffitti a volta con archi trasversali. Illuminazione incassata, due lampadari in ferro e una fontana in terracotta con putti a rilievo, decorativa e funzionale. Circondato su due lati da gradinate in marmo.',
+    'room-mezz-name': 'Soppalco Camera da Letto',
+    'room-mezz-desc': "Suggestivo soppalco adibito a camera da letto con bagno con vasca al piano di sotto. Accessibile dalla scala interna o dall'ingresso di Via del Caccia.",
+    'room-tuff-name': 'Arco in Tufo — Cucina',
+    'room-tuff-desc': 'Un arco in tufo porta a uno spazio predisposto per eventuale uso cucina, con tubazioni già presenti.',
+    'room-inscr-name': 'Iscrizione Etrusca',
+    'room-inscr-desc': 'Una piccola iscrizione etrusca su una delle pareti data l\'area a diversi secoli prima di Cristo — un legame vivo con il mondo antico.',
+    'etruscan-eyebrow': 'Patrimonio Antico',
+    'etruscan-title': 'La <em>Cava</em><br>Etrusca',
+    'etruscan-quote': '«Sotto questo piano, una grande cava scavata dagli Etruschi arriva fino alla base della Rupe.»',
+    'etruscan-body': 'La cava, insieme a varie cisterne sotterranee, è stata svuotata, illuminata e resa pienamente accessibile. Le pareti in tufo sono state scalpellinate a vivo e trattate con un fissante traspirante, preservando il loro carattere storico autentico.<br><br>I lavori di restauro e scavo sono stati condotti secondo rigorosi criteri storici, garantendo che il tessuto antico dell\'edificio sia onorato in ogni dettaglio.',
+    'specs-eyebrow': 'Scheda Tecnica',
+    'specs-heading': "Specifiche<br>dell'Immobile",
+    'spec-type-lbl': 'Tipologia',
+    'spec-type-val': 'Libera su quattro lati',
+    'spec-surface-lbl': 'Superficie Catastale',
+    'spec-surface-val': '217 m²',
+    'spec-heating-lbl': 'Riscaldamento',
+    'spec-heating-val': 'Due sistemi indipendenti',
+    'spec-floors-lbl': 'Piani Abitativi',
+    'spec-floors-val': 'Due + cava etrusca',
+    'spec-cond-lbl': 'Condizioni',
+    'spec-cond-val': 'Chiavi in mano',
+    'spec-climate-lbl': 'Climatizzazione',
+    'spec-climate-val': 'A/C (sup.) · Deumidificatore (inf.)',
+    'spec-seismic-lbl': 'Norma Antisismica',
+    'spec-seismic-val': "Tetto e muri con cordoli d'acciaio",
+    'spec-loc-lbl': 'Ubicazione',
+    'spec-loc-val': 'Orvieto, Umbria · UNESCO',
+    'rest-eyebrow': 'Progettato Da',
+    'rest-title': 'Architetti<br><em>di Eccellenza</em>',
+    'rest-body': 'I lavori di restauro, scavi e ricostruzione sono stati curati seguendo rigorosi criteri storici da tre professionisti di assoluta eccellenza.',
+    'arch-farneth-role': 'Architetto · San Francisco, California',
+    'arch-pigozzi-role': 'Architetto · Orvieto, Umbria',
+    'arch-pelucchi-role': 'Geometra',
+    'contact-eyebrow': 'Acquisizione',
+    'contact-heading': 'Prezzo e<br>Contatto',
+    'price-lbl': 'Prezzo Richiesto',
+    'price-note': 'Oppure offerta superiore',
+    'price-incl-lbl': 'Incluso nella Vendita',
+    'price-incl-txt': 'Tutta la mobilia, opere d\'arte, elettrodomestici (frigo, forno, lavastoviglie, lavatrice, asciugatrice), lampadari, lenzuola, coperte, tappeti e stoviglie.',
+    'contact-cta': 'Richiedi Informazioni',
+    'agent-eyebrow': 'Agenzia Immobiliare',
+    'agent-address': 'Piazza Ascanio Vitozzi 5<br>05018 Orvieto (TR) · Italia',
+    'registry-note': 'VISURA — Comune di Orvieto · N. TI76549<br>Catasto Fabbricati — Foglio 181, Particella 116, Sub. 1<br>Superficie catastale: 217 m²<br>Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y',
+    'gallery-eyebrow': 'Fotografie',
+    'gallery-heading': 'Galleria<br>Fotografica',
+    'footer-reg': 'VISURA — Comune di Orvieto · N. TI76549 · Foglio 181, Particella 116, Sub. 1<br>Superficie 217 m² · Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y',
+    'footer-lang': '<a href="#" onclick="showLangPicker(); return false;">Change Language / Cambia Lingua</a>',
+  }
+};
+
+let currentLang = 'en';
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  const t = TRANSLATIONS[lang];
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
+  document.documentElement.lang = lang;
+  document.title = lang === 'it'
+    ? 'Orvieto Casa sulla Rupe — Immobile di Lusso'
+    : 'Orvieto House on the Rock — Casa sulla Rupe';
+  try { localStorage.setItem('lang', lang); } catch(e) {}
+}
+
+function setLanguage(lang) {
+  const overlay = document.getElementById('langOverlay');
+  overlay.classList.add('hidden');
+  setTimeout(() => { overlay.style.display = 'none'; }, 500);
+  applyLanguage(lang);
+}
+
+function showLangPicker() {
+  const overlay = document.getElementById('langOverlay');
+  overlay.style.display = 'flex';
+  setTimeout(() => { overlay.classList.remove('hidden'); }, 10);
+}
+
+// On load: check saved preference or show picker
+window.addEventListener('DOMContentLoaded', function() {
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch(e) {}
+  if (saved === 'en' || saved === 'it') {
+    document.getElementById('langOverlay').style.display = 'none';
+    applyLanguage(saved);
+  }
+  // else: overlay shows by default (it's already visible in HTML)
+});
+
+</script>
 </body>
 </html>
