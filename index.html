@@ -1,0 +1,2918 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orvieto House on the Rock — Casa sulla Rupe — Light</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Raleway:wght@200;300;400;500;600&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   ROOT & RESET
+═══════════════════════════════════════════ */
+:root {
+  --black:      #F8F4EE;
+  --charcoal:   #F0EBE2;
+  --dark:       #EAE4DA;
+  --dark-mid:   #E2DAD0;
+  --panel:      #EDE7DC;
+  --gold:       #8B6914;
+  --gold-light: #A07D1A;
+  --gold-dim:   #B8941E;
+  --cream:      #1A1410;
+  --cream-mid:  #3D3028;
+  --cream-dim:  #7A6A58;
+  --white:      #FDFAF5;
+  --ph-bg:      #E4DDD3;
+  --ph-border:  #C8BEAF;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY SYSTEM
+═══════════════════════════════════════════ */
+.display {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.display-sc {
+  font-family: 'Playfair Display SC', serif;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.eyebrow {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════
+   GOLD RULES & DECORATIONS
+═══════════════════════════════════════════ */
+.gold-rule {
+  display: block;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.6;
+  margin: 0 auto;
+}
+
+.gold-rule-left {
+  height: 1px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  opacity: 0.5;
+}
+
+.section-num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--gold-dim);
+  opacity: 0.18;
+  position: absolute;
+  right: 0;
+  top: -20px;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   IMAGE PLACEHOLDER
+═══════════════════════════════════════════ */
+.ph {
+  background: var(--ph-bg);
+  border: 1px solid var(--ph-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.ph::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent, transparent 18px,
+    rgba(196,154,60,0.04) 18px, rgba(196,154,60,0.04) 19px
+  );
+}
+
+.ph:hover { border-color: var(--gold-dim); }
+
+.ph-icon {
+  width: 36px;
+  height: 36px;
+  stroke: var(--gold-dim);
+  opacity: 0.5;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.ph-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  text-align: center;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.ph-note {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  color: #555;
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 22px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+nav.over-hero .nav-logo { color: #F5F0E8; }
+nav.over-hero .nav-logo span { color: #C49A3C; }
+nav.over-hero .nav-links a { color: rgba(245,240,232,0.85); }
+nav.over-hero .nav-links a:hover { color: #C49A3C; }
+
+nav.scrolled {
+  background: rgba(248,244,238,0.98);
+  border-bottom: 1px solid rgba(139,105,20,0.2);
+  box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display SC', serif;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.nav-logo span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+   background-image: url('Photo_Gallery/Hero.jpg');
+   background-size: cover;
+   background-position: center;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(248,244,238,0.92) 0%,
+    rgba(248,244,238,0.25) 40%,
+    rgba(248,244,238,0.05) 100%
+  );
+}
+
+.hero-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  z-index: 0;
+}
+
+.hero-ph svg { width: 40px; height: 40px; stroke: var(--gold-dim); opacity: 0.35; }
+.hero-ph p { font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; color: #444; }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 80px 80px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: flex-end;
+  gap: 60px;
+}
+
+.hero-left {}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.hero-eyebrow .eyebrow { font-size: 9px; }
+
+.hero-eyebrow-line {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 7vw, 90px);
+  font-weight: 400;
+  line-height: 1.0;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 400;
+  color: var(--cream-mid);
+  margin-bottom: 32px;
+  letter-spacing: 0.02em;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+}
+
+.hero-stat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.hero-stat-lbl {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+.hero-right {
+  text-align: right;
+  padding-bottom: 4px;
+}
+
+.hero-price-lbl {
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.hero-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1;
+}
+
+.hero-price-sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--cream-dim);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+.hero-cta {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 13px 32px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+
+.hero-cta:hover { background: var(--gold); color: var(--black); }
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.scroll-indicator span {
+  font-size: 7.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+.scroll-arrow {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.9; }
+}
+
+/* ═══════════════════════════════════════════
+   SECTION FRAMEWORK
+═══════════════════════════════════════════ */
+section { position: relative; }
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.section-header-text {}
+
+.section-header .eyebrow { margin-bottom: 8px; }
+
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.15;
+}
+
+/* ═══════════════════════════════════════════
+   INTRO STRIP
+═══════════════════════════════════════════ */
+.intro-strip {
+  background: var(--charcoal);
+  padding: 80px 0;
+  border-top: 1px solid rgba(196,154,60,0.15);
+  border-bottom: 1px solid rgba(196,154,60,0.15);
+}
+
+.intro-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.intro-label-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.intro-big-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 5vw, 64px);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.1;
+}
+
+.intro-big-text em { color: var(--gold); font-style: italic; }
+
+.intro-url {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(196,154,60,0.35);
+  padding-bottom: 2px;
+  align-self: flex-start;
+  transition: color 0.2s;
+}
+
+.intro-body { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--cream-mid); }
+.intro-body strong { color: var(--cream); font-weight: 400; }
+
+/* ═══════════════════════════════════════════
+   STATS BAR
+═══════════════════════════════════════════ */
+.stats-bar {
+  background: var(--gold);
+  padding: 32px 0;
+}
+
+.stats-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-item { text-align: center; }
+
+.stat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-lbl {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.65);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(0,0,0,0.2);
+}
+
+/* ═══════════════════════════════════════════
+   FEATURED PHOTO SECTION
+═══════════════════════════════════════════ */
+.featured-photos {
+  padding: 100px;
+  background: var(--black);
+}
+
+.photo-hero-grid {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  padding: 0 60px;
+}
+
+.photo-hero-single {
+  width: 100%;
+  height: 560px;
+  margin-bottom: 20px;
+}
+
+.photo-trio {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.photo-trio .ph { height: 280px; }
+
+/* ═══════════════════════════════════════════
+   FLOOR SECTIONS
+═══════════════════════════════════════════ */
+.floor-section {
+  padding: 100px 0;
+}
+
+.floor-section:nth-child(odd) { background: var(--charcoal); }
+.floor-section:nth-child(even) { background: var(--dark); }
+
+.floor-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.floor-grid.reverse { direction: rtl; }
+.floor-grid.reverse > * { direction: ltr; }
+
+.floor-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.floor-images .ph-main {
+  grid-column: 1 / -1;
+  height: 320px;
+}
+
+.floor-images .ph-sub { height: 180px; }
+
+.floor-text {}
+
+.floor-address {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.floor-address::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+
+.floor-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+.room-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.room-item {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(196,154,60,0.12);
+}
+
+.room-item:first-child { border-top: 1px solid rgba(196,154,60,0.12); }
+
+.room-name {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.room-desc {
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--cream-mid);
+}
+
+/* Included note */
+.included-note {
+  margin-top: 28px;
+  padding: 20px 24px;
+  border-left: 2px solid var(--gold);
+  background: rgba(196,154,60,0.05);
+}
+
+.included-note .eyebrow { margin-bottom: 8px; }
+
+.included-note p {
+  font-size: 12.5px;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--cream-dim);
+}
+
+/* ═══════════════════════════════════════════
+   ETRUSCAN FEATURE SECTION
+═══════════════════════════════════════════ */
+.etruscan-section {
+  background: var(--black);
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.etruscan-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.etruscan-text .eyebrow { margin-bottom: 16px; }
+
+.etruscan-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.etruscan-title em { color: var(--gold); font-style: italic; }
+
+.etruscan-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--gold);
+  line-height: 1.5;
+  margin: 28px 0;
+  padding-left: 24px;
+  border-left: 2px solid var(--gold);
+}
+
+.etruscan-body {
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--cream-mid);
+}
+
+.etruscan-images {
+  display: grid;
+  grid-template-rows: 260px 260px;
+  gap: 14px;
+}
+
+/* ═══════════════════════════════════════════
+   SPECS SECTION
+═══════════════════════════════════════════ */
+.specs-section {
+  background: var(--charcoal);
+  padding: 100px 0;
+  border-top: 1px solid rgba(196,154,60,0.12);
+}
+
+.specs-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.spec-card {
+  padding: 36px 28px;
+  border-right: 1px solid rgba(196,154,60,0.12);
+  border-bottom: 1px solid rgba(196,154,60,0.12);
+  position: relative;
+}
+
+.spec-card:nth-child(4n) { border-right: none; }
+.spec-card:nth-last-child(-n+4) { border-bottom: none; }
+
+.spec-icon {
+  width: 20px;
+  height: 20px;
+  stroke: var(--gold);
+  margin-bottom: 14px;
+  opacity: 0.7;
+}
+
+.spec-lbl {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 6px;
+}
+
+.spec-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+}
+
+/* ═══════════════════════════════════════════
+   INCLUDED SECTION
+═══════════════════════════════════════════ */
+.included-section {
+  background: var(--dark);
+  padding: 100px 0;
+}
+
+.included-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.included-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.included-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(196,154,60,0.1);
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--cream-mid);
+  line-height: 1.6;
+}
+
+.included-list li::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.included-aside {
+  padding: 48px;
+  border: 1px solid rgba(196,154,60,0.25);
+  background: rgba(196,154,60,0.04);
+  position: sticky;
+  top: 100px;
+}
+
+.included-aside .eyebrow { margin-bottom: 20px; }
+
+.included-aside-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--cream);
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+.included-aside-sub {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--cream-dim);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════
+   RESTORATION SECTION
+═══════════════════════════════════════════ */
+.restoration-section {
+  background: var(--black);
+  padding: 80px 0;
+  border-top: 1px solid rgba(196,154,60,0.12);
+  border-bottom: 1px solid rgba(196,154,60,0.12);
+}
+
+.restoration-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.restoration-label {
+  text-align: right;
+}
+
+.restoration-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.restoration-title em { color: var(--gold); font-style: italic; }
+
+.architect-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.architect {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(196,154,60,0.1);
+}
+
+.architect:first-child { border-top: 1px solid rgba(196,154,60,0.1); }
+
+.architect-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--cream);
+  margin-bottom: 2px;
+}
+
+.architect-role {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT / AGENT SECTION
+═══════════════════════════════════════════ */
+.contact-section {
+  background: var(--charcoal);
+  padding: 100px 0;
+}
+
+.contact-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.price-block {
+  padding: 56px;
+  border: 1px solid rgba(196,154,60,0.3);
+  background: rgba(196,154,60,0.04);
+}
+
+.price-lbl {
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.price-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.price-sub {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--cream-dim);
+  margin-bottom: 4px;
+}
+
+.price-note {
+  font-style: italic;
+  font-size: 12px;
+  color: var(--gold-dim);
+  margin-bottom: 32px;
+}
+
+.price-divider {
+  height: 1px;
+  background: rgba(196,154,60,0.25);
+  margin: 28px 0;
+}
+
+.price-include-lbl {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.price-include-txt {
+  font-size: 12.5px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--cream-dim);
+}
+
+.agent-block {}
+
+.agent-agency {
+  font-family: 'Playfair Display SC', serif;
+  font-size: 20px;
+  color: var(--cream);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.agent-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+
+.agent-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(196,154,60,0.1);
+}
+
+.agent-info-row svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+.agent-info-text {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--cream-mid);
+  line-height: 1.5;
+}
+
+.registry-note {
+  margin-top: 32px;
+  padding: 16px;
+  background: var(--dark);
+  border: 1px solid rgba(196,154,60,0.1);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+  color: var(--cream-dim);
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 28px;
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+  background: var(--gold);
+  color: var(--black);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s;
+}
+
+.cta-btn:hover { background: var(--gold-light); }
+
+/* ═══════════════════════════════════════════
+   GALLERY CAROUSEL
+═══════════════════════════════════════════ */
+.gallery-section {
+  background: var(--black);
+  padding: 100px 0;
+  border-top: 1px solid rgba(196,154,60,0.15);
+}
+
+.gallery-section .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
+
+.gallery-section .section-header { margin-bottom: 48px; }
+
+/* How to add photos to carousel — see comment inside .carousel-track */
+
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin: 0 -60px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  /*
+  ══════════════════════════════════════════════════════
+  HOW TO ADD YOUR PHOTOS TO THE CAROUSEL:
+
+  Each .carousel-slide div is one photo slot.
+  To add a real photo, replace the contents of a .carousel-slide
+  with an <img> tag:
+
+    <div class="carousel-slide">
+      <img src="your-photo.jpg" alt="Description" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+
+  To add more slides, duplicate any .carousel-slide div.
+  Photos should ideally be landscape (16:9 or wider).
+  ══════════════════════════════════════════════════════
+  */
+}
+
+.carousel-slide {
+  min-width: calc(33.333% - 8px);
+  height: 400px;
+  margin-right: 12px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.carousel-slide:last-child { margin-right: 0; }
+
+.carousel-slide .ph {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide:hover .slide-overlay { opacity: 1; }
+
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(196,154,60,0.12);
+  border: 1px solid rgba(196,154,60,0.4);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.carousel-controls {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.carousel-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(196,154,60,0.4);
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.carousel-btn:hover { background: rgba(196,154,60,0.12); border-color: var(--gold); }
+
+.carousel-btn svg { width: 18px; height: 18px; stroke: currentColor; }
+
+.carousel-dots {
+  display: flex;
+  gap: 14.5px;
+  align-items: center;
+}
+
+.carousel-dot {
+  width: 11px;
+  height: 11px;
+  background: rgba(139,105,20,0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.carousel-dot.active {
+  background: var(--gold);
+  transform: scale(1.3);
+}
+
+.carousel-counter {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--cream-dim);
+}
+
+.carousel-counter span { color: var(--gold); }
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox.open { display: flex; }
+
+.lightbox-inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 1000px;
+}
+
+.lightbox-img {
+  width: 100%;
+  height: auto;
+  max-height: 85vh;
+  object-fit: contain;
+  display: block;
+}
+
+.lightbox-ph {
+  width: 100%;
+  height: 70vh;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: none;
+  border: none;
+  color: var(--cream);
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lightbox-close::after { content: '×'; font-size: 22px; font-weight: 300; }
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(196,154,60,0.15);
+  border: 1px solid rgba(196,154,60,0.3);
+  color: var(--gold);
+  cursor: pointer;
+  width: 48px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.lightbox-nav:hover { background: rgba(196,154,60,0.3); }
+.lightbox-nav.prev { left: -70px; }
+.lightbox-nav.next { right: -70px; }
+.lightbox-nav svg { width: 20px; height: 20px; stroke: currentColor; }
+
+.lightbox-caption {
+  text-align: center;
+  padding: 16px 0 0;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(196,154,60,0.15);
+  padding: 40px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.footer-logo {
+  font-family: 'Playfair Display SC', serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--cream-dim);
+}
+
+.footer-logo span { color: var(--gold); }
+
+.footer-reg {
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: #444;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.footer-lang {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+.footer-lang a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  .hero-content { padding: 0 24px 60px; grid-template-columns: 1fr; }
+  .hero-right { text-align: left; }
+  .section-inner, .intro-grid, .floor-grid, .etruscan-inner,
+  .contact-inner, .included-inner, .restoration-inner { padding: 0 24px; grid-template-columns: 1fr; }
+  .stats-inner { padding: 0 24px; flex-wrap: wrap; gap: 24px; }
+  .specs-grid { grid-template-columns: 1fr 1fr; }
+  .photo-trio { grid-template-columns: 1fr; padding: 0 24px; }
+  .photo-hero-grid { padding: 0 24px; }
+  .carousel-slide { min-width: calc(100% - 12px); }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+}
+
+/* ═══════════════════════════════════════════
+   LIGHT THEME OVERRIDES
+═══════════════════════════════════════════ */
+:root {
+  --black:      #F8F4EE;
+  --charcoal:   #F0EBE2;
+  --dark:       #EAE4DA;
+  --dark-mid:   #E2DAD0;
+  --panel:      #EDE7DC;
+  --gold:       #8B6914;
+  --gold-light: #A07D1A;
+  --gold-dim:   #B8941E;
+  --cream:      #1A1410;
+  --cream-mid:  #3D3028;
+  --cream-dim:  #7A6A58;
+  --white:      #FDFAF5;
+  --ph-bg:      #E4DDD3;
+  --ph-border:  #C8BEAF;
+}
+
+body {
+  background: #F8F4EE;
+  color: #1A1410;
+}
+
+/* Nav */
+nav {
+  background: transparent;
+}
+
+nav.scrolled {
+  background: rgba(248,244,238,0.98);
+  border-bottom: 1px solid rgba(139,105,20,0.2);
+  box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+}
+
+.nav-logo { color: #1A1410; transition: color 0.5s ease; }
+.nav-links a { color: #7A6A58; transition: color 0.5s ease; }
+.nav-links a:hover { color: var(--gold); }
+
+/* Hero */
+.hero-bg {
+  background-color: #E2DAD0;
+}
+
+.hero-bg::after {
+  background: linear-gradient(
+    to top,
+    rgba(15,10,5,0.88) 0%,
+    rgba(15,10,5,0.35) 45%,
+    rgba(15,10,5,0.0) 100%
+  );
+}
+
+.hero-ph p { color: #B0A090; }
+
+.hero-title { color: #F5F0E8; }
+.hero-title em { color: #C49A3C; }
+.hero-subtitle { color: #C8BEAF; }
+.hero-stat-val { color: #C49A3C; }
+.hero-stat-lbl { color: #A09080; }
+.hero-price-lbl { color: #C49A3C; }
+.hero-price { color: #F5F0E8; }
+.hero-price-sub { color: #C8BEAF; }
+.hero-eyebrow .eyebrow { color: #C49A3C; }
+.hero-eyebrow-line { background: #C49A3C; }
+
+.hero-cta {
+  border-color: #C49A3C;
+  color: #C49A3C;
+}
+.hero-cta:hover { background: #C49A3C; color: #0F0A05; }
+
+.scroll-indicator span { color: #A09080; }
+.scroll-arrow { background: linear-gradient(to bottom, #C49A3C, transparent); }
+
+/* Intro strip */
+.intro-strip {
+  background: #EFE9DF;
+  border-top: 1px solid rgba(139,105,20,0.15);
+  border-bottom: 1px solid rgba(139,105,20,0.15);
+}
+
+.intro-big-text { color: #1A1410; }
+.intro-big-text em { color: var(--gold); }
+.intro-url { color: var(--gold); border-bottom-color: rgba(139,105,20,0.35); }
+.intro-body { color: #5A4A38; }
+.intro-body strong { color: #1A1410; }
+
+/* Stats bar */
+.stats-bar { background: var(--gold); }
+.stat-val { color: #F8F4EE; }
+.stat-lbl { color: rgba(248,244,238,0.75); }
+.stat-divider { background: rgba(248,244,238,0.3); }
+
+/* Featured photos */
+.featured-photos { background: #F8F4EE; }
+
+/* Floor sections */
+.floor-section:nth-child(odd) { background: #EFE9DF; }
+.floor-section:nth-child(even) { background: #F4EFE7; }
+
+.floor-heading { color: #1A1410; }
+.floor-address { color: var(--gold); }
+.floor-address::before { background: var(--gold); }
+
+.room-item { border-bottom-color: rgba(139,105,20,0.15); }
+.room-item:first-child { border-top-color: rgba(139,105,20,0.15); }
+.room-name { color: var(--gold); }
+.room-desc { color: #5A4A38; }
+
+.included-note {
+  border-left-color: var(--gold);
+  background: rgba(139,105,20,0.06);
+}
+.included-note p { color: #7A6A58; }
+
+/* Etruscan */
+.etruscan-section { background: #1A1410; }
+.etruscan-title { color: #F8F4EE; }
+.etruscan-title em { color: #C49A3C; }
+.etruscan-quote { color: #C49A3C; border-left-color: #C49A3C; }
+.etruscan-body { color: #C8BEAF; }
+.etruscan-section .eyebrow { color: #C49A3C; }
+
+/* Specs */
+.specs-section {
+  background: #EFE9DF;
+  border-top-color: rgba(139,105,20,0.15);
+}
+
+.spec-card {
+  border-right-color: rgba(139,105,20,0.15);
+  border-bottom-color: rgba(139,105,20,0.15);
+}
+.spec-lbl { color: #9A8A78; }
+.spec-val { color: #1A1410; }
+.spec-icon { stroke: var(--gold); }
+
+/* Restoration */
+.restoration-section {
+  background: #F8F4EE;
+  border-top-color: rgba(139,105,20,0.15);
+  border-bottom-color: rgba(139,105,20,0.15);
+}
+.restoration-title { color: #1A1410; }
+.restoration-title em { color: var(--gold); }
+.architect-name { color: #1A1410; }
+.architect-role { color: #9A8A78; }
+.architect { border-bottom-color: rgba(139,105,20,0.12); }
+.architect:first-child { border-top-color: rgba(139,105,20,0.12); }
+
+/* Contact */
+.contact-section { background: #EFE9DF; }
+
+.price-block {
+  border-color: rgba(139,105,20,0.35);
+  background: rgba(139,105,20,0.04);
+}
+.price-lbl { color: var(--gold); }
+.price-main { color: #1A1410; }
+.price-sub { color: #5A4A38; }
+.price-note { color: #9A8A78; }
+.price-divider { background: rgba(139,105,20,0.2); }
+.price-include-lbl { color: var(--gold); }
+.price-include-txt { color: #7A6A58; }
+
+.agent-agency { color: #1A1410; }
+.agent-name { color: #1A1410; }
+.agent-info-row { border-bottom-color: rgba(139,105,20,0.12); }
+.agent-info-row svg { stroke: var(--gold); }
+.agent-info-text { color: #5A4A38; }
+
+.registry-note {
+  background: #EAE4DA;
+  border-color: rgba(139,105,20,0.15);
+  color: #9A8A78;
+}
+
+.cta-btn { background: var(--gold); color: #F8F4EE; }
+.cta-btn:hover { background: var(--gold-light); }
+
+/* Section headings */
+.section-heading { color: #1A1410; }
+
+/* Gallery */
+.gallery-section {
+  background: #F8F4EE;
+  border-top-color: rgba(139,105,20,0.15);
+}
+
+.ph {
+  background: #E4DDD3;
+  border-color: #C8BEAF;
+}
+.ph:hover { border-color: var(--gold); }
+.ph-icon { stroke: #B8A898; }
+.ph-label { color: #9A8A78; }
+.ph::before {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0px, transparent 16px,
+    rgba(139,105,20,0.05) 16px, rgba(139,105,20,0.05) 17px
+  );
+}
+
+.slide-overlay {
+  background: rgba(139,105,20,0.08);
+  border-color: rgba(139,105,20,0.35);
+}
+
+.carousel-btn {
+  border-color: rgba(139,105,20,0.35);
+  color: var(--gold);
+}
+.carousel-btn:hover {
+  background: rgba(139,105,20,0.08);
+  border-color: var(--gold);
+}
+
+.carousel-dot { background: rgba(139,105,20,0.2); }
+.carousel-dot.active { background: var(--gold); }
+.carousel-counter { color: #9A8A78; }
+.carousel-counter span { color: var(--gold); }
+
+/* Lightbox stays dark */
+.lightbox { background: rgba(0,0,0,0.92); }
+.lightbox-close { color: #F8F4EE; }
+.lightbox-nav {
+  background: rgba(196,154,60,0.15);
+  border-color: rgba(196,154,60,0.3);
+  color: #C49A3C;
+}
+.lightbox-caption { color: #9A8A78; }
+
+/* Footer */
+footer {
+  background: #1A1410;
+  border-top-color: rgba(196,154,60,0.2);
+}
+.footer-logo { color: #9A8A78; }
+.footer-logo span { color: #C49A3C; }
+.footer-reg { color: #4A3A2A; }
+.footer-lang a { color: #C49A3C; }
+
+/* Gold rules */
+.gold-rule {
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* Scroll indicator on hero */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.agent-info-text a {
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .agent-info-text a:hover {
+      border-bottom-color: var(--gold);
+    }
+
+
+
+/* ═══ LANGUAGE PICKER ═══ */
+#langOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 10, 5, 0.88);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+#langOverlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lang-modal {
+  background: #F8F4EE;
+  padding: 60px 72px;
+  text-align: center;
+  max-width: 480px;
+  width: 90%;
+}
+
+.lang-eyebrow {
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #8B6914;
+  margin-bottom: 14px;
+}
+
+.lang-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #1A1410;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.lang-title em {
+  font-style: italic;
+  color: #8B6914;
+}
+
+.lang-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: #7A6A58;
+  margin-bottom: 40px;
+}
+
+.lang-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #8B6914, transparent);
+  opacity: 0.4;
+  margin-bottom: 40px;
+}
+
+.lang-choices {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.lang-btn {
+  flex: 1;
+  padding: 18px 0;
+  border: 1px solid rgba(139,105,20,0.35);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s;
+  font-family: 'Playfair Display SC', serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: #1A1410;
+}
+
+.lang-btn:hover {
+  background: rgba(139,105,20,0.08);
+  border-color: #8B6914;
+}
+
+.lang-btn .lang-name {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.lang-btn .lang-native {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8B6914;
+}
+
+</style>
+</head>
+<body>
+
+
+<!-- NAV -->
+
+<!-- ═══ LANGUAGE PICKER OVERLAY ═══ -->
+<div id="langOverlay">
+  <div class="lang-modal">
+    <div class="lang-eyebrow">Casa sulla Rupe · Orvieto</div>
+    <h2 class="lang-title">Choose Your<br><em>Language</em></h2>
+    <p class="lang-subtitle">Seleziona la tua lingua</p>
+    <div class="lang-divider"></div>
+    <div class="lang-choices">
+      <button class="lang-btn" onclick="setLanguage('en')">
+        <span class="lang-name">English</span>
+        <span class="lang-native">English</span>
+      </button>
+      <button class="lang-btn" onclick="setLanguage('it')">
+        <span class="lang-name">Italiano</span>
+        <span class="lang-native">Italian</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<nav id="mainNav">
+  <a href="#" class="nav-logo">Casa sulla <span>Rupe</span></a>
+  <ul class="nav-links">
+    <li><a href="#upper-floor" data-key="nav-upper">Upper Floor</a></li>
+    <li><a href="#lower-floor" data-key="nav-lower">Lower Floor</a></li>
+    <li><a href="#etruscan" data-key="nav-heritage">Heritage</a></li>
+    <li><a href="#specs" data-key="nav-details">Details</a></li>
+    <li><a href="#gallery" data-key="nav-gallery">Gallery</a></li>
+    <li><a href="#contact" data-key="nav-contact">Contact</a></li>
+    <li><a href="#" onclick="showLangPicker(); return false;" style="opacity:0.6;">EN / IT</a></li>
+  </ul>
+</nav>
+
+
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-ph">
+      <!-- REPLACE THIS WITH YOUR HERO IMAGE:
+           Add style="background-image:url('hero.jpg');background-size:cover;background-position:center;"
+           to the .hero-bg div above, then delete this .hero-ph block -->
+      <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke-width="1"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      <p>Hero Photo — Exterior / Panoramic View</p>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="eyebrow" data-key="hero-location">Orvieto · Umbria · Italy</span>
+        <span class="hero-eyebrow-line"></span>
+        <span class="eyebrow" data-key="hero-unesco">UNESCO World Heritage</span>
+      </div>
+      <h1 class="hero-title">Casa sulla<br><em>Rupe</em></h1>
+      <p class="hero-subtitle" data-key="hero-subtitle">House on the Rock</p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-val" data-key="stat-surface-val">2,336 ft²</div>
+          <div class="hero-stat-lbl" data-key="stat-surface-lbl">Total Surface</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">2</div>
+          <div class="hero-stat-lbl" data-key="stat-floors-lbl">Living Floors</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">1000+</div>
+          <div class="hero-stat-lbl" data-key="stat-history-lbl">Years of History</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-price-lbl" data-key="price-lbl-hero">Asking Price</div>
+      <div class="hero-price" data-key="price-main">$690,000</div>
+      <div class="hero-price-sub" data-key="price-sub">€ 600,000 EUR</div>
+      <a href="#contact" class="hero-cta" data-key="hero-cta">Request Information</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span data-key="scroll-lbl">Discover</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ═══════ INTRO ═══════ -->
+<section class="intro-strip">
+  <div class="intro-grid fade-in">
+    <div class="intro-label-block">
+      <div class="eyebrow" data-key="intro-eyebrow">The Property</div>
+      <div class="intro-big-text" data-key="intro-big">Orvieto<br><em>Western</em><br>Cliff</div>
+      <a href="http://www.orvietohouseontherock.com" target="_blank" class="intro-url">www.orvietohouseontherock.com</a>
+    </div>
+    <div class="intro-body" data-key="intro-body">
+      <p>This stand-alone house sits on the <strong>Western cliff of Orvieto</strong>, free on all four sides. It commands truly stunning panoramic views with breathtaking sunsets, and offers <strong>absolute privacy</strong> — while being just steps from restaurants, cafés, piazzas, and monuments.</p>
+      <br>
+      <p>Just <strong>50 metres from the 11th-Century Church of San Giovenale</strong>, and a leisurely 10-minute walk from the magnificent Orvieto Cathedral. This is the most coveted panoramic location in the city.</p>
+      <br>
+      <p>A home in <strong>perfect condition</strong>, ready to be lived in from day one — or offered for short-term rental on Airbnb and VRBO, as it currently operates.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ STATS BAR ═══════ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-val" data-key="bar-surface-val">2,336 ft²</div>
+      <div class="stat-lbl" data-key="bar-surface-lbl">Cadastral Surface</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-val">2</div>
+      <div class="stat-lbl" data-key="bar-floors-lbl">Living Floors</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-val">50m</div>
+      <div class="stat-lbl" data-key="bar-church-lbl">From San Giovenale Church</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-val" data-key="bar-turnkey-val">Turn-Key</div>
+      <div class="stat-lbl" data-key="bar-turnkey-lbl">Move-In Ready</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-val">UNESCO</div>
+      <div class="stat-lbl" data-key="bar-unesco-lbl">World Heritage City</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ FEATURED PHOTOS ═══════ -->
+<section class="featured-photos fade-in">
+  <div class="photo-hero-grid">
+    <div class="photo-hero-grid">
+      <div style="width:100%;height:560px;overflow:hidden;">
+        <img src="Photo_Gallery/Featured_1.jpg" style="width:100%;height:100%;object-fit:contain;transform:scale(1);transform-origin:center bottom;display:block;">
+      </div>
+    </div>
+  </div>
+ <div class="photo-trio">
+    <img src="Photo_Gallery/Featured_2.jpg" style="width:100%;height:280px;object-fit:cover;display:block;">
+    <img src="Photo_Gallery/Featured_3.jpg" style="width:100%;height:280px;object-fit:cover;display:block;">
+    <img src="Photo_Gallery/Featured_4.jpg" style="width:100%;height:280px;object-fit:cover;display:block;">
+  </div>
+</section>
+
+<!-- ═══════ UPPER FLOOR ═══════ -->
+<section class="floor-section" id="upper-floor">
+  <div class="floor-grid fade-in">
+    <div class="floor-images">
+      <div class="ph ph-main">
+       <img src="Photo_Gallery/Livingroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;display:block;">
+      </div>
+      <div class="ph ph-sub">
+         <img src="Photo_Gallery/Kitchen_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;display:block;">
+      </div>
+      <div class="ph ph-sub">
+         <img src="Photo_Gallery/Master_Bedroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;display:block;">
+      </div>
+    </div>
+    <div class="floor-text">
+      <div class="floor-address" data-key="upper-address">Via Volsinia No. 1</div>
+      <h2 class="floor-heading" data-key="upper-heading">The Upper<br>Floor</h2>
+      <div class="room-list">
+        <div class="room-item">
+          <div class="room-name" data-key="room-study-name">Private Study</div>
+          <div class="room-desc" data-key="room-study-desc">Upon entry to the left, a private study with a small sofa-bed, desk, and large built-in wall shelving. A quiet retreat within the home.</div>
+        </div>
+        <div class="room-item">
+          <div class="room-name" data-key="room-living-name">Central Living Room</div>
+          <div class="room-desc" data-key="room-living-desc">Beautifully furnished: dining area, couch and arm chair. A built-in electric pizza and roasting oven in the corner. On the wall, a large painting by the renowned Livornese artist <em>Francesco Pelleschi</em>. The French door opens onto a small balcony with a breathtaking view.</div>
+        </div>
+        <div class="room-item">
+          <div class="room-name" data-key="room-kitchen-name">Kitchen</div>
+          <div class="room-desc" data-key="room-kitchen-desc">A well-appointed kitchen leading through a hallway to the bathroom and elegantly furnished bedroom.</div>
+        </div>
+        <div class="room-item">
+          <div class="room-name" data-key="room-bath-name">Bathroom &amp; Bedroom</div>
+          <div class="room-desc" data-key="room-bath-desc">Bathroom with shower and an elegantly furnished bedroom completing the upper level.</div>
+        </div>
+      </div>
+      <div class="included-note">
+        <div class="eyebrow" data-key="upper-incl-eyebrow">Fully Furnished &amp; Equipped</div>
+        <p>All furnishings, artwork, the painting, a Maiolica large mirror, a full range of appliances, chandeliers, linens, blankets, rugs, and dinnerware are included in the sale price.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ LOWER FLOOR ═══════ -->
+<section class="floor-section" id="lower-floor">
+  <div class="floor-grid reverse fade-in">
+    <div class="floor-text">
+      <div class="floor-address" data-key="lower-address">Via del Caccia No. 9</div>
+      <h2 class="floor-heading" data-key="lower-heading">The Lower<br>Floor</h2>
+      <div class="room-list">
+        <div class="room-item">
+          <div class="room-name" data-key="room-hall-name">Grand Central Hall</div>
+          <div class="room-desc" data-key="room-hall-desc">Twice the size of the upper floor. Beautiful marble floor, vaulted ceilings with crossing arches. Recessed lighting, two iron chandeliers, and a raised putti terracotta fountain in working condition. The hall is surrounded on two sides by marble stands.</div>
+        </div>
+        <div class="room-item">
+          <div class="room-name" data-key="room-mezz-name">Mezzanine Bedroom</div>
+          <div class="room-desc" data-key="room-mezz-desc">A charming mezzanine set up as a bedroom with its own bathroom below. Accessed via the internal staircase or the main door on Via del Caccia.</div>
+        </div>
+        <div class="room-item">
+          <div class="room-name" data-key="room-tuff-name">Tuff Arch Kitchen Area</div>
+          <div class="room-desc" data-key="room-tuff-desc">A natural tuff arch with an area that could be used as a second kitchen — plumbing already in place.</div>
+        </div>
+        <div class="room-item">
+          <div class="room-name" data-key="room-inscr-name">Etruscan Inscription</div>
+          <div class="room-desc" data-key="room-inscr-desc">A small Etruscan inscription on one of the walls dates the area to several centuries BC — a living connection to the ancient world.</div>
+        </div>
+      </div>
+    </div>
+    <div class="floor-images">
+      <div class="ph ph-main">
+         <img src="Photo_Gallery/Great_Hall_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;display:block;">
+      </div>
+      <div class="ph ph-sub">
+         <img src="Photo_Gallery/Second_Bedroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;display:block;">
+      </div>
+      <div class="ph ph-sub">
+         <img src="Photo_Gallery/Etruscan_Inscription.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;display:block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ETRUSCAN ═══════ -->
+<section class="etruscan-section" id="etruscan">
+  <div class="etruscan-inner fade-in">
+    <div class="etruscan-text">
+      <div class="eyebrow" data-key="etruscan-eyebrow">Ancient Heritage</div>
+      <h2 class="etruscan-title" data-key="etruscan-title">The <em>Etruscan</em><br>Quarry</h2>
+      <div class="etruscan-quote" data-key="etruscan-quote">"Beneath this floor, a large square quarry cut by the Etruscans reaches all the way to the bottom of the cliff."</div>
+      <p class="etruscan-body" data-key="etruscan-body">Part of the quarry, along with several ancient cisterns, have been emptied, illuminated, and made fully accessible. The tuff walls throughout have been hand-chiseled and treated with a breathable fixative, preserving their raw historic character.<br><br>The restoration and excavation work was carried out following strict historical criteria, ensuring that the ancient fabric of the building is honored in every detail.</p>
+    </div>
+    <div class="etruscan-images">
+      <div class="ph" style="height:260px;">
+         <img src="Photo_Gallery/Entrance_to_Etruscan_Cave.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;display:block;">
+      </div>
+      <div class="ph" style="height:260px;">
+         <img src="Photo_Gallery/Grotto.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center bottom;display:block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SPECS ═══════ -->
+<section class="specs-section" id="specs">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-header-text">
+        <div class="eyebrow" data-key="specs-eyebrow">Property Details</div>
+        <h2 class="section-heading" data-key="specs-heading">Technical<br>Specifications</h2>
+      </div>
+    </div>
+  </div>
+  <div class="specs-grid fade-in">
+    <div class="spec-card">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <div class="spec-lbl" data-key="spec-type-lbl">Property Type</div>
+      <div class="spec-val" data-key="spec-type-val">Stand-alone · Free on all four sides</div>
+    </div>
+    <div class="spec-card">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+      <div class="spec-lbl" data-key="spec-surface-lbl">Cadastral Surface</div>
+      <div class="spec-val" data-key="spec-surface-val">2,336 ft²</div>
+    </div>
+    <div class="spec-card">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22V8M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M12 8c-4 0-4-4 0-4s4 4 0 4z"/></svg>
+      <div class="spec-lbl" data-key="spec-heating-lbl">Heating</div>
+      <div class="spec-val" data-key="spec-heating-val">Two independent systems</div>
+    </div>
+    <div class="spec-card">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+      <div class="spec-lbl" data-key="spec-floors-lbl">Living Floors</div>
+      <div class="spec-val" data-key="spec-floors-val">Two + Etruscan quarry below</div>
+    </div>
+    <div class="spec-card">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      <div class="spec-lbl" data-key="spec-cond-lbl">Condition</div>
+      <div class="spec-val" data-key="spec-cond-val">Turn-key · Ready from day one</div>
+    </div>
+    <div class="spec-card">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+      <div class="spec-lbl" data-key="spec-climate-lbl">Climate Control</div>
+      <div class="spec-val" data-key="spec-climate-val">A/C upper · Dehumidifier lower</div>
+    </div>
+    <div class="spec-card">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
+      <div class="spec-lbl" data-key="spec-seismic-lbl">Seismic Standard</div>
+      <div class="spec-val" data-key="spec-seismic-val">Roof &amp; walls reinforced, steel beams</div>
+    </div>
+    <div class="spec-card">
+      <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div class="spec-lbl" data-key="spec-loc-lbl">Location</div>
+      <div class="spec-val" data-key="spec-loc-val">Orvieto, Umbria · UNESCO Heritage</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ RESTORATION ═══════ -->
+<section class="restoration-section">
+  <div class="restoration-inner fade-in">
+    <div class="restoration-label">
+      <div class="eyebrow" style="text-align:right; margin-bottom:12px;" data-key="rest-eyebrow">Designed By</div>
+      <h3 class="restoration-title" data-key="rest-title">Master<br><em>Architects</em></h3>
+    </div>
+    <div>
+      <p style="font-size:13.5px; color:var(--cream-mid); margin-bottom:28px; line-height:1.8;" data-key="rest-body">The restoration, excavation and reconstruction was carried out following strict historical criteria by three distinguished professionals.</p>
+      <div class="architect-list">
+        <div class="architect">
+          <div>
+            <div class="architect-name">Steve Farneth, FAIA</div>
+            <div class="architect-role" data-key="arch-farneth-role">Architect · San Francisco, California</div>
+          </div>
+        </div>
+        <div class="architect">
+          <div>
+            <div class="architect-name">Gianfranco Pigozzi</div>
+            <div class="architect-role" data-key="arch-pigozzi-role">Architect · Orvieto, Umbria</div>
+          </div>
+        </div>
+        <div class="architect">
+          <div>
+            <div class="architect-name">Marco Pelucchi</div>
+            <div class="architect-role" data-key="arch-pelucchi-role">Surveyor (Geometra)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section class="contact-section" id="contact">
+  <div class="section-inner" style="margin-bottom:56px;">
+    <div class="section-header fade-in">
+      <div class="section-header-text">
+        <div class="eyebrow" data-key="contact-eyebrow">Acquisition</div>
+        <h2 class="section-heading" data-key="contact-heading">Price &amp;<br>Contact</h2>
+      </div>
+    </div>
+  </div>
+  <div class="contact-inner fade-in">
+    <div class="price-block">
+      <div class="price-lbl" data-key="price-lbl">Asking Price</div>
+      <div class="price-main" data-key="price-main">$690,000</div>
+      <div class="price-sub" data-key="price-sub">€ 600,000 EUR</div>
+      <div class="price-note" data-key="price-note">Or higher offer accepted</div>
+      <div class="price-divider"></div>
+      <div class="price-include-lbl" data-key="price-incl-lbl">Fully Included in Sale</div>
+      <div class="price-include-txt" data-key="price-incl-txt">All furnishings, artwork, appliances (refrigerator, oven, dishwasher, washing machine &amp; dryer), chandeliers, linens, blankets, rugs, and dinnerware.</div>
+      <a href="mailto:piacerecasa@gmail.com,saviogia@gmail.com" class="cta-btn" data-key="contact-cta">Inquire About This Property</a>
+    </div>
+    <div class="agent-block">
+      <div class="eyebrow" style="margin-bottom:20px;" data-key="agent-eyebrow">Real Estate Agency</div>
+      <div class="agent-agency">Piacere Casa</div>
+      <div class="agent-name">Massimo<br>Ceccantoni</div>
+      <div class="agent-info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9A16 16 0 0 0 15 16.09l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div class="agent-info-text">+39 333 7177775</div>
+      </div>
+      <div class="agent-info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div class="agent-info-text"><a href="mailto:piacerecasa@gmail.com,saviogia@gmail.com">piacerecasa@gmail.com</a></div>
+      </div>
+      <div class="agent-info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="agent-info-text"><a href="http://www.orvietohouseontherock.com" target="_blank">www.orvietohouseontherock.com</a></div>
+      </div>
+      <div class="agent-info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="agent-info-text" data-key="agent-address">Piazza Ascanio Vitozzi 5<br>05018 Orvieto (TR) · Italy</div>
+      </div>
+      <div class="registry-note" data-key="registry-note">
+        Registry (Visura) — Comune di Orvieto · No.: TI76549<br>
+        Catasto Fabbricati — Sheet 181, Parcel 116, Sub. 1<br>
+        Cadastral surface: 2,336 ft² (217 m²)<br>
+        Owner: SAVIO Giovanni · Tax Code: SVAGNN41L25H710Y
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ GALLERY CAROUSEL ═══════ -->
+<section class="gallery-section" id="gallery">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-header-text">
+        <div class="eyebrow" data-key="gallery-eyebrow">Photography</div>
+        <h2 class="section-heading" data-key="gallery-heading">Photo<br>Gallery</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-wrapper">
+    <div class="carousel-track" id="carouselTrack">
+
+      <div class="carousel-slide" data-caption="Aerial View" data-index="0">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Aerial_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center bottom;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Aerial View — Western Cliff Facade" data-index="1">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Aerial_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Aerial View" data-index="2">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Aerial_3.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center center;object-position: center bottom;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Street View — Western Cliff Facade" data-index="3">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Cliff.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Aerial View - Western Entrance" data-index="4">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Exterior_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center bottom;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Street View - Western Entrance" data-index="5">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Exterior_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Street View - North West Corner" data-index="6">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Exterior_3.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Aerial View - North Wall" data-index="7">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Exterior_4.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Street View - North Wall" data-index="8">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Exterior_5.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Street View - South East Entrance" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Exterior_6.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Ground Floor - Western Entrance" data-index="0">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Entrance_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Top of stairs - Livingroom" data-index="1">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Livingroom_4.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 70%;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Livingroom - view of eastern entrance" data-index="2">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Livingroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Livingroom - dining area" data-index="3">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Livingroom_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Livingroom - western view" data-index="4">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Livingroom_3.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Livingroom - pizza oven" data-index="4">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Pizza_oven.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Liginroom - balcony view" data-index="5">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Livingroom_Balcony_View.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Kitchen" data-index="6">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Kitchen_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Kitchen - South view" data-index="7">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Kitchen_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Hallway" data-index="8">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Corridor.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Master Bedroom" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Master_Bedroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Master Bedroom" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Master_Bedroom_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Bathroom" data-index="8">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Upper_Bathroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Studio/Guestroom" data-index="8">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Studio_Guest_Room.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Western Entrance" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Entrance_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Vaulted Ceilings & Crossing Arches" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Great_Hall_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Vaulted Ceilings & Crossing Arches" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Great_Hall_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Second Bedroom" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Second_Bedroom_1.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Second Bedroom" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Second_Bedroom_2.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center center;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Terracotta Fountain — Putti Relief" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Terracotta_Fountain.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 35%;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Corner view of second bathroom door and closet"" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Lower_Level_Corner.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 30%;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Second Bathroom" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Lower_Bathroom.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 30%;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Wine Cellar" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Wine_cellar.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 70%;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Staircase to Etruscan Quarry" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Entrance_to_Etruscan_Cave.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 70%;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide" data-caption="Etruscan Quarry" data-index="9">
+        <div class="ph" style="width:100%;height:100%;">
+          <img src="Photo_Gallery/Grotto.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1);transform-origin:center bottom;object-position: center 70%;display:block;">
+        </div>
+        <div class="slide-overlay"></div>
+      </div>
+
+
+
+    </div><!-- end carousel-track -->
+  </div><!-- end carousel-wrapper -->
+
+  <div class="carousel-controls">
+    <button class="carousel-btn" id="prevBtn" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="carousel-btn" id="nextBtn" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="carousel-dots" id="carouselDots"></div>
+    <div class="carousel-counter"><span id="currentSlide">1</span> / <span id="totalSlides">10</span></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose">Close</button>
+    <button class="lightbox-nav prev" id="lbPrev">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="ph lightbox-ph" id="lightboxContent">
+      <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke-width="1"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    </div>
+    <button class="lightbox-nav next" id="lbNext">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Casa sulla <span>Rupe</span> · Orvieto</div>
+  <div class="footer-reg" data-key="footer-reg">
+    VISURA — Comune di Orvieto · No. TI76549 · Foglio 181, Particella 116, Sub. 1<br>
+    Surface 2,336 ft² · Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y
+  </div>
+  <div class="footer-lang" data-key="footer-lang">
+    <a href="site_it_light.html">Versione Italiana →</a>
+  </div>
+</footer>
+
+<script>
+/* ═══ NAV ═══ */
+const nav = document.getElementById('mainNav');
+const hero = document.querySelector('.hero');
+
+function updateNav() {
+  const heroHeight = hero ? hero.offsetHeight : 600;
+  const progress = Math.min(window.scrollY / (heroHeight * 0.4), 1);
+
+  // Background: smokey dark rgba(10,8,5,0.45) → cream rgba(248,244,238,0.98)
+  const bgR = Math.round(10  + (248 - 10)  * progress);
+  const bgG = Math.round(8   + (244 - 8)   * progress);
+  const bgB = Math.round(5   + (238 - 5)   * progress);
+  const bgA = Math.round((0.45 + (0.98 - 0.45) * progress) * 100) / 100;
+  nav.style.background = `rgba(${bgR},${bgG},${bgB},${bgA})`;
+
+  // Border: invisible → subtle gold
+  const borderA = Math.round(0.2 * progress * 100) / 100;
+  nav.style.borderBottom = `1px solid rgba(139,105,20,${borderA})`;
+
+  // Box shadow: none → soft
+  nav.style.boxShadow = progress > 0.8 ? '0 1px 20px rgba(0,0,0,0.06)' : 'none';
+
+  // Text: cream → dark charcoal
+  const txtR = Math.round(245 + (26  - 245) * progress);
+  const txtG = Math.round(240 + (20  - 240) * progress);
+  const txtB = Math.round(232 + (16  - 232) * progress);
+  const logo = nav.querySelector('.nav-logo');
+  const links = nav.querySelectorAll('.nav-links a');
+  if (logo) logo.style.color = `rgb(${txtR},${txtG},${txtB})`;
+  links.forEach(a => { a.style.color = `rgb(${txtR},${txtG},${txtB})`; });
+
+  // Gold span in logo stays gold always
+  const logoSpan = nav.querySelector('.nav-logo span');
+  if (logoSpan) logoSpan.style.color = '#C49A3C';
+}
+
+window.addEventListener('scroll', updateNav);
+updateNav();
+
+/* ═══ FADE IN ═══ */
+const faders = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+faders.forEach(f => observer.observe(f));
+
+/* ═══ CAROUSEL ═══ */
+const track     = document.getElementById('carouselTrack');
+const slides    = Array.from(track.querySelectorAll('.carousel-slide'));
+const dotsWrap  = document.getElementById('carouselDots');
+const prevBtn   = document.getElementById('prevBtn');
+const nextBtn   = document.getElementById('nextBtn');
+const curEl     = document.getElementById('currentSlide');
+const totEl     = document.getElementById('totalSlides');
+
+const VISIBLE   = 3; // slides visible at once
+let current     = 0;
+const total     = slides.length;
+
+totEl.textContent = total;
+
+// Build dots
+slides.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goTo(i));
+  dotsWrap.appendChild(dot);
+});
+
+function getSlideWidth() {
+  const wrap = document.querySelector('.carousel-wrapper');
+  return wrap.offsetWidth / VISIBLE + 4; // +4 gap approx
+}
+
+function goTo(index) {
+  current = Math.max(0, Math.min(index, total - VISIBLE));
+  const w = getSlideWidth();
+  track.style.transform = `translateX(-${current * w}px)`;
+  curEl.textContent = current + 1;
+  document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === current);
+  });
+}
+
+prevBtn.addEventListener('click', () => goTo(current - 1));
+nextBtn.addEventListener('click', () => goTo(current + 1));
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') goTo(current - 1);
+  if (e.key === 'ArrowRight') goTo(current + 1);
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Touch swipe
+let startX = 0;
+track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+track.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - startX;
+  if (dx < -40) goTo(current + 1);
+  if (dx > 40) goTo(current - 1);
+});
+
+window.addEventListener('resize', () => goTo(current));
+
+/* ═══ LIGHTBOX ═══ */
+const lightbox = document.getElementById('lightbox');
+const lbContent = document.getElementById('lightboxContent');
+const lbCaption = document.getElementById('lightboxCaption');
+let lbCurrent = 0;
+let allImages = [];
+
+function buildImageList() {
+  allImages = [];
+  document.querySelectorAll('img').forEach(img => {
+    if (img.closest('.carousel-slide')) return;
+    allImages.push({ src: img.src, caption: img.alt || '', position: img.style.objectPosition || 'center center' });
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      const idx = allImages.findIndex(x => x.src === img.src);
+      openLightbox(idx);
+    });
+  });
+  slides.forEach(slide => {
+    const img = slide.querySelector('img');
+    const caption = slide.dataset.caption || '';
+    if (img) allImages.push({ src: img.src, caption, position: img.style.objectPosition || 'center center' });
+    else allImages.push({ src: null, caption, slide });
+  });
+}
+
+function openLightbox(index) {
+  lbCurrent = index;
+  updateLightbox();
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function updateLightbox() {
+  const item = allImages[lbCurrent];
+  lbCaption.textContent = item.caption || '';
+  if (item.src) {
+    const img = document.createElement('img');
+    img.src = item.src;
+    const position = item.position || 'center center';
+    img.style.cssText = `width:100%;height:100vh;object-fit:cover;object-position:${position};display:block;background:#000;`;
+    lbContent.innerHTML = '';
+    lbContent.appendChild(img);
+  } else if (item.slide) {
+    const ph = item.slide.querySelector('.ph');
+    const lbl = ph ? (ph.querySelector('.ph-label')?.textContent || '') : '';
+    lbContent.innerHTML = `<div class="ph lightbox-ph" style="width:100%;height:70vh;">${lbl}</div>`;
+  }
+}
+
+buildImageList();
+
+slides.forEach((slide, i) => {
+  const offset = allImages.length - slides.length;
+  slide.addEventListener('click', () => openLightbox(offset + i));
+});
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', () => {
+  lbCurrent = (lbCurrent - 1 + allImages.length) % allImages.length;
+  updateLightbox();
+});
+document.getElementById('lbNext').addEventListener('click', () => {
+  lbCurrent = (lbCurrent + 1) % allImages.length;
+  updateLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') { lbCurrent = (lbCurrent - 1 + allImages.length) % allImages.length; updateLightbox(); }
+  if (e.key === 'ArrowRight') { lbCurrent = (lbCurrent + 1) % allImages.length; updateLightbox(); }
+  if (e.key === 'Escape') closeLightbox();
+});
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+</script>
+
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<style>
+#topBtn {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 150;
+  width: 50px;
+  height: 50px;
+  background: rgba(139,105,20,0.15);
+  border: 3px solid rgba(139,105,20,0.4);
+  color: #8B6914;
+  font-size: 32px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s;
+  pointer-events: none;
+}
+#topBtn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+#topBtn:hover {
+  background: rgba(139,105,20,0.3);
+}
+</style>
+
+<script>
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll', () => {
+  topBtn.classList.toggle('visible', window.scrollY > 1000);
+});
+</script>
+
+
+<script>
+
+/* ═══ TRANSLATIONS ═══ */
+const TRANSLATIONS = {
+  en: {
+    'nav-upper': 'Upper Floor',
+    'nav-lower': 'Lower Floor',
+    'nav-heritage': 'Heritage',
+    'nav-details': 'Details',
+    'nav-gallery': 'Gallery',
+    'nav-contact': 'Contact',
+    'hero-location': 'Orvieto · Umbria · Italy',
+    'hero-unesco': 'UNESCO World Heritage',
+    'hero-subtitle': 'House on the Rock',
+    'stat-surface-lbl': 'Total Surface',
+    'stat-surface-val': '2,336 ft²',
+    'stat-floors-lbl': 'Living Floors',
+    'stat-history-lbl': 'Years of History',
+    'price-lbl-hero': 'Asking Price',
+    'price-main': '$690,000',
+    'price-sub': '€ 600,000 EUR',
+    'hero-cta': 'Request Information',
+    'scroll-lbl': 'Discover',
+    'intro-eyebrow': 'The Property',
+    'intro-big': 'Orvieto<br><em>Western</em><br>Cliff',
+    'intro-body': '<p>This stand-alone house sits on the <strong>Western cliff of Orvieto</strong>, free on all four sides. It commands truly stunning panoramic views with breathtaking sunsets, and offers <strong>absolute privacy</strong> — while being just steps from restaurants, cafés, piazzas, and monuments.</p><br><p>Just <strong>50 metres from the 11th-Century Church of San Giovenale</strong>, and a leisurely 10-minute walk from the magnificent Orvieto Cathedral. This is the most coveted panoramic location in the city.</p><br><p>A home in <strong>perfect condition</strong>, ready to be lived in from day one — or offered for short-term rental on Airbnb and VRBO, as it currently operates.</p>',
+    'bar-surface-val': '2,336 ft²',
+    'bar-surface-lbl': 'Cadastral Surface',
+    'bar-floors-lbl': 'Living Floors',
+    'bar-church-lbl': 'From San Giovenale Church',
+    'bar-turnkey-val': 'Turn-Key',
+    'bar-turnkey-lbl': 'Move-In Ready',
+    'bar-unesco-lbl': 'World Heritage City',
+    'upper-address': 'Via Volsinia No. 1',
+    'upper-heading': 'The Upper<br>Floor',
+    'room-study-name': 'Private Study',
+    'room-study-desc': 'Upon entry to the left, a private study with a small sofa-bed, desk, and large built-in wall shelving. A quiet retreat within the home.',
+    'room-living-name': 'Central Living Room',
+    'room-living-desc': 'Beautifully furnished: dining area, couch and arm chair. A built-in electric pizza and roasting oven in the corner. On the wall, a large painting by the renowned Livornese artist <em>Francesco Pelleschi</em>. The French door opens onto a small balcony with a breathtaking view.',
+    'room-kitchen-name': 'Kitchen',
+    'room-kitchen-desc': 'A well-appointed kitchen leading through a hallway to the bathroom and elegantly furnished bedroom.',
+    'room-bath-name': 'Bathroom &amp; Bedroom',
+    'room-bath-desc': 'Bathroom with shower and an elegantly furnished bedroom completing the upper level.',
+    'upper-incl-eyebrow': 'Fully Furnished &amp; Equipped',
+    'lower-address': 'Via del Caccia No. 9',
+    'lower-heading': 'The Lower<br>Floor',
+    'room-hall-name': 'Grand Central Hall',
+    'room-hall-desc': 'Twice the size of the upper floor. Beautiful marble floor, vaulted ceilings with crossing arches. Recessed lighting, two iron chandeliers, and a raised putti terracotta fountain in working condition. The hall is surrounded on two sides by marble stands.',
+    'room-mezz-name': 'Mezzanine Bedroom',
+    'room-mezz-desc': 'A charming mezzanine set up as a bedroom with its own bathroom below. Accessed via the internal staircase or the main door on Via del Caccia.',
+    'room-tuff-name': 'Tuff Arch Kitchen Area',
+    'room-tuff-desc': 'A natural tuff arch with an area that could be used as a second kitchen — plumbing already in place.',
+    'room-inscr-name': 'Etruscan Inscription',
+    'room-inscr-desc': 'A small Etruscan inscription on one of the walls dates the area to several centuries BC — a living connection to the ancient world.',
+    'etruscan-eyebrow': 'Ancient Heritage',
+    'etruscan-title': 'The <em>Etruscan</em><br>Quarry',
+    'etruscan-quote': '"Beneath this floor, a large square quarry cut by the Etruscans reaches all the way to the bottom of the cliff."',
+    'etruscan-body': 'Part of the quarry, along with several ancient cisterns, have been emptied, illuminated, and made fully accessible. The tuff walls throughout have been hand-chiseled and treated with a breathable fixative, preserving their raw historic character.<br><br>The restoration and excavation work was carried out following strict historical criteria, ensuring that the ancient fabric of the building is honored in every detail.',
+    'specs-eyebrow': 'Property Details',
+    'specs-heading': 'Technical<br>Specifications',
+    'spec-type-lbl': 'Property Type',
+    'spec-type-val': 'Stand-alone · Free on all four sides',
+    'spec-surface-lbl': 'Cadastral Surface',
+    'spec-surface-val': '2,336 ft²',
+    'spec-heating-lbl': 'Heating',
+    'spec-heating-val': 'Two independent systems',
+    'spec-floors-lbl': 'Living Floors',
+    'spec-floors-val': 'Two + Etruscan quarry below',
+    'spec-cond-lbl': 'Condition',
+    'spec-cond-val': 'Turn-key · Ready from day one',
+    'spec-climate-lbl': 'Climate Control',
+    'spec-climate-val': 'A/C upper · Dehumidifier lower',
+    'spec-seismic-lbl': 'Seismic Standard',
+    'spec-seismic-val': 'Roof &amp; walls reinforced, steel beams',
+    'spec-loc-lbl': 'Location',
+    'spec-loc-val': 'Orvieto, Umbria · UNESCO Heritage',
+    'rest-eyebrow': 'Designed By',
+    'rest-title': 'Master<br><em>Architects</em>',
+    'rest-body': 'The restoration, excavation and reconstruction was carried out following strict historical criteria by three distinguished professionals.',
+    'arch-farneth-role': 'Architect · San Francisco, California',
+    'arch-pigozzi-role': 'Architect · Orvieto, Umbria',
+    'arch-pelucchi-role': 'Surveyor (Geometra)',
+    'contact-eyebrow': 'Acquisition',
+    'contact-heading': 'Price &amp;<br>Contact',
+    'price-lbl': 'Asking Price',
+    'price-note': 'Or higher offer accepted',
+    'price-incl-lbl': 'Fully Included in Sale',
+    'price-incl-txt': 'All furnishings, artwork, appliances (refrigerator, oven, dishwasher, washing machine &amp; dryer), chandeliers, linens, blankets, rugs, and dinnerware.',
+    'contact-cta': 'Inquire About This Property',
+    'agent-eyebrow': 'Real Estate Agency',
+    'agent-address': 'Piazza Ascanio Vitozzi 5<br>05018 Orvieto (TR) · Italy',
+    'registry-note': 'Registry (Visura) — Comune di Orvieto · No.: TI76549<br>Catasto Fabbricati — Sheet 181, Parcel 116, Sub. 1<br>Cadastral surface: 2,336 ft² (217 m²)<br>Owner: SAVIO Giovanni · Tax Code: SVAGNN41L25H710Y',
+    'gallery-eyebrow': 'Photography',
+    'gallery-heading': 'Photo<br>Gallery',
+    'footer-reg': 'VISURA — Comune di Orvieto · No. TI76549 · Foglio 181, Particella 116, Sub. 1<br>Surface 2,336 ft² · Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y',
+    'footer-lang': '<a href="#" onclick="showLangPicker(); return false;">Cambia Lingua / Change Language</a>',
+  },
+  it: {
+    'nav-upper': 'Piano Superiore',
+    'nav-lower': 'Piano Inferiore',
+    'nav-heritage': 'Patrimonio',
+    'nav-details': 'Dettagli',
+    'nav-gallery': 'Galleria',
+    'nav-contact': 'Contatto',
+    'hero-location': 'Orvieto · Umbria · Italia',
+    'hero-unesco': 'Patrimonio UNESCO',
+    'hero-subtitle': 'La Casa sulla Rupe',
+    'stat-surface-lbl': 'Superficie Totale',
+    'stat-surface-val': '217 m²',
+    'stat-floors-lbl': 'Piani Abitativi',
+    'stat-history-lbl': 'Anni di Storia',
+    'price-lbl-hero': 'Prezzo Richiesto',
+    'price-main': '€ 600.000',
+    'price-sub': '$ 690,000 USD',
+    'hero-cta': 'Richiedi Informazioni',
+    'scroll-lbl': 'Scopri',
+    'intro-eyebrow': "L'Immobile",
+    'intro-big': 'Orvieto<br><em>Rupe</em><br>Ovest',
+    'intro-body': '<p>Questa casa indipendente si erge sulla <strong>Rupe occidentale di Orvieto</strong>, libera su quattro lati. Offre panorami straordinari con tramonti e vedute mozzafiato e <strong>assoluta privacy</strong> — a poca distanza da ristoranti, caffè, piazze e monumenti.</p><br><p>A soli <strong>50 metri dalla bellissima chiesa di San Giovenale dell\'XI Secolo</strong> e a 10 minuti a piedi dalla magnifica Cattedrale di Orvieto. La zona panoramica per eccellenza della città.</p><br><p>Una casa in <strong>perfette condizioni</strong>, pronta per essere vissuta fin dal primo giorno — o proposta per affitti a breve termine su Airbnb e VRBO, come già avviene.</p>',
+    'bar-surface-val': '217 m²',
+    'bar-surface-lbl': 'Superficie Catastale',
+    'bar-floors-lbl': 'Piani Abitativi',
+    'bar-church-lbl': 'Da San Giovenale',
+    'bar-turnkey-val': 'Chiavi in Mano',
+    'bar-turnkey-lbl': 'Pronta dal Primo Giorno',
+    'bar-unesco-lbl': "Patrimonio dell'Umanità",
+    'upper-address': 'Via Volsinia N. 1',
+    'upper-heading': 'Il Piano<br>Superiore',
+    'room-study-name': 'Studio Privato',
+    'room-study-desc': "Sulla sinistra all'ingresso, studio privato con divano, scrivania e un'ampia scaffalatura a muro integrata.",
+    'room-living-name': 'Salone Centrale',
+    'room-living-desc': 'Arredato con gusto: tavolo, sedie, scaffali, divano e poltrona. Forno elettrico per pizza e arrosti in un angolo. Sul muro principale, il grande dipinto del celebre artista livornese <em>Francesco Pelleschi</em>. La porta-finestra dà su un piccolo balcone con panorama stupendo.',
+    'room-kitchen-name': 'Cucina',
+    'room-kitchen-desc': 'Cucina attrezzata che attraverso un corridoio conduce al bagno e alla camera da letto.',
+    'room-bath-name': 'Bagno e Camera da Letto',
+    'room-bath-desc': 'Bagno con doccia e camera da letto ben arredata, che completano il piano superiore.',
+    'upper-incl-eyebrow': 'Completamente Arredato e Attrezzato',
+    'lower-address': 'Via del Caccia N. 9',
+    'lower-heading': 'Il Piano<br>Inferiore',
+    'room-hall-name': 'Grande Salone Centrale',
+    'room-hall-desc': 'Il doppio dello spazio del piano superiore. Pavimentazione in marmo, soffitti a volta con archi trasversali. Illuminazione incassata, due lampadari in ferro e una fontana in terracotta con putti a rilievo, decorativa e funzionale. Circondato su due lati da gradinate in marmo.',
+    'room-mezz-name': 'Soppalco Camera da Letto',
+    'room-mezz-desc': "Suggestivo soppalco adibito a camera da letto con bagno con vasca al piano di sotto. Accessibile dalla scala interna o dall'ingresso di Via del Caccia.",
+    'room-tuff-name': 'Arco in Tufo — Cucina',
+    'room-tuff-desc': 'Un arco in tufo porta a uno spazio predisposto per eventuale uso cucina, con tubazioni già presenti.',
+    'room-inscr-name': 'Iscrizione Etrusca',
+    'room-inscr-desc': 'Una piccola iscrizione etrusca su una delle pareti data l\'area a diversi secoli prima di Cristo — un legame vivo con il mondo antico.',
+    'etruscan-eyebrow': 'Patrimonio Antico',
+    'etruscan-title': 'La <em>Cava</em><br>Etrusca',
+    'etruscan-quote': '«Sotto questo piano, una grande cava scavata dagli Etruschi arriva fino alla base della Rupe.»',
+    'etruscan-body': 'La cava, insieme a varie cisterne sotterranee, è stata svuotata, illuminata e resa pienamente accessibile. Le pareti in tufo sono state scalpellinate a vivo e trattate con un fissante traspirante, preservando il loro carattere storico autentico.<br><br>I lavori di restauro e scavo sono stati condotti secondo rigorosi criteri storici, garantendo che il tessuto antico dell\'edificio sia onorato in ogni dettaglio.',
+    'specs-eyebrow': 'Scheda Tecnica',
+    'specs-heading': "Specifiche<br>dell'Immobile",
+    'spec-type-lbl': 'Tipologia',
+    'spec-type-val': 'Libera su quattro lati',
+    'spec-surface-lbl': 'Superficie Catastale',
+    'spec-surface-val': '217 m²',
+    'spec-heating-lbl': 'Riscaldamento',
+    'spec-heating-val': 'Due sistemi indipendenti',
+    'spec-floors-lbl': 'Piani Abitativi',
+    'spec-floors-val': 'Due + cava etrusca',
+    'spec-cond-lbl': 'Condizioni',
+    'spec-cond-val': 'Chiavi in mano',
+    'spec-climate-lbl': 'Climatizzazione',
+    'spec-climate-val': 'A/C (sup.) · Deumidificatore (inf.)',
+    'spec-seismic-lbl': 'Norma Antisismica',
+    'spec-seismic-val': "Tetto e muri con cordoli d'acciaio",
+    'spec-loc-lbl': 'Ubicazione',
+    'spec-loc-val': 'Orvieto, Umbria · UNESCO',
+    'rest-eyebrow': 'Progettato Da',
+    'rest-title': 'Architetti<br><em>di Eccellenza</em>',
+    'rest-body': 'I lavori di restauro, scavi e ricostruzione sono stati curati seguendo rigorosi criteri storici da tre professionisti di assoluta eccellenza.',
+    'arch-farneth-role': 'Architetto · San Francisco, California',
+    'arch-pigozzi-role': 'Architetto · Orvieto, Umbria',
+    'arch-pelucchi-role': 'Geometra',
+    'contact-eyebrow': 'Acquisizione',
+    'contact-heading': 'Prezzo e<br>Contatto',
+    'price-lbl': 'Prezzo Richiesto',
+    'price-note': 'Oppure offerta superiore',
+    'price-incl-lbl': 'Incluso nella Vendita',
+    'price-incl-txt': 'Tutta la mobilia, opere d\'arte, elettrodomestici (frigo, forno, lavastoviglie, lavatrice, asciugatrice), lampadari, lenzuola, coperte, tappeti e stoviglie.',
+    'contact-cta': 'Richiedi Informazioni',
+    'agent-eyebrow': 'Agenzia Immobiliare',
+    'agent-address': 'Piazza Ascanio Vitozzi 5<br>05018 Orvieto (TR) · Italia',
+    'registry-note': 'VISURA — Comune di Orvieto · N. TI76549<br>Catasto Fabbricati — Foglio 181, Particella 116, Sub. 1<br>Superficie catastale: 217 m²<br>Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y',
+    'gallery-eyebrow': 'Fotografie',
+    'gallery-heading': 'Galleria<br>Fotografica',
+    'footer-reg': 'VISURA — Comune di Orvieto · N. TI76549 · Foglio 181, Particella 116, Sub. 1<br>Superficie 217 m² · Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y',
+    'footer-lang': '<a href="#" onclick="showLangPicker(); return false;">Change Language / Cambia Lingua</a>',
+  }
+};
+
+let currentLang = 'en';
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  const t = TRANSLATIONS[lang];
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
+  document.documentElement.lang = lang;
+  document.title = lang === 'it'
+    ? 'Orvieto Casa sulla Rupe — Immobile di Lusso'
+    : 'Orvieto House on the Rock — Casa sulla Rupe';
+  try { localStorage.setItem('lang', lang); } catch(e) {}
+}
+
+function setLanguage(lang) {
+  const overlay = document.getElementById('langOverlay');
+  overlay.classList.add('hidden');
+  setTimeout(() => { overlay.style.display = 'none'; }, 500);
+  applyLanguage(lang);
+}
+
+function showLangPicker() {
+  const overlay = document.getElementById('langOverlay');
+  overlay.style.display = 'flex';
+  setTimeout(() => { overlay.classList.remove('hidden'); }, 10);
+}
+
+// On load: check saved preference or show picker
+(function() {
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch(e) {}
+  if (saved === 'en' || saved === 'it') {
+    setLanguage(saved);
+    document.getElementById('langOverlay').style.display = 'none';
+  }
+  // else: overlay shows by default (it's already visible in HTML)
+})();
+
+</script>
+</body>
+</html>
