@@ -1421,6 +1421,26 @@ footer {
   .nav-hamburger { display: flex; color: currentColor; }
   .nav-drawer { display: flex; }
 
+  /* Dark strip behind nav on mobile so logo + hamburger are always readable */
+  nav {
+    background: rgba(10,8,5,0.55) !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+  /* Keep nav text light on mobile regardless of scroll */
+  #mainNav .nav-logo { color: #F5F0E8 !important; }
+  #mainNav .nav-logo span { color: #C49A3C !important; }
+  #mainNav .nav-hamburger { color: #F5F0E8 !important; }
+
+  /* Simplify eyebrow on mobile — stack less awkwardly */
+  .hero-eyebrow {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .hero-eyebrow .eyebrow { font-size: 8px; }
+  .hero-eyebrow-line { width: 24px; }
+
   .hero-content { padding: 0 24px 60px; grid-template-columns: 1fr; }
   .hero-right { text-align: left; margin-top: 20px; }
   .hero-title { font-size: clamp(44px, 12vw, 72px); }
@@ -2602,6 +2622,9 @@ function updateNav() {
   const heroHeight = hero ? hero.offsetHeight : 600;
   const progress = Math.min(window.scrollY / (heroHeight * 0.4), 1);
 
+  // On mobile, nav stays dark always — handled by CSS
+  if (window.innerWidth <= 900) return;
+
   // Background: smokey dark rgba(10,8,5,0.45) → cream rgba(248,244,238,0.98)
   const bgR = Math.round(10  + (248 - 10)  * progress);
   const bgG = Math.round(8   + (244 - 8)   * progress);
@@ -2631,6 +2654,7 @@ function updateNav() {
 }
 
 window.addEventListener('scroll', updateNav);
+window.addEventListener('resize', updateNav);
 updateNav();
 
 /* ═══ FADE IN ═══ */
