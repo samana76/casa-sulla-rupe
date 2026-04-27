@@ -1418,28 +1418,15 @@ footer {
 @media (max-width: 900px) {
   nav { padding: 18px 24px; }
   .nav-links { display: none; }
-  .nav-hamburger { display: flex; color: currentColor; }
+  .nav-hamburger { display: flex; }
   .nav-drawer { display: flex; }
 
-  /* Dark strip behind nav on mobile so logo + hamburger are always readable */
-  nav {
-    background: rgba(10,8,5,0.55) !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
-  }
-  /* Keep nav text light on mobile regardless of scroll */
-  #mainNav .nav-logo { color: #F5F0E8 !important; }
-  #mainNav .nav-logo span { color: #C49A3C !important; }
-  #mainNav .nav-hamburger { color: #F5F0E8 !important; }
+  /* Eyebrow text: white on mobile so it reads against hero photo */
+  .hero-eyebrow .eyebrow { color: #F5F0E8 !important; font-size: 8px; }
+  .hero-eyebrow-line { background: #F5F0E8 !important; width: 24px; }
 
-  /* Simplify eyebrow on mobile — stack less awkwardly */
-  .hero-eyebrow {
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  .hero-eyebrow .eyebrow { font-size: 8px; }
-  .hero-eyebrow-line { width: 24px; }
+  /* Simplify eyebrow wrapping */
+  .hero-eyebrow { flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 
   .hero-content { padding: 0 24px 60px; grid-template-columns: 1fr; }
   .hero-right { text-align: left; margin-top: 20px; }
@@ -1468,7 +1455,11 @@ footer {
 
   .photo-trio { grid-template-columns: 1fr; padding: 0 20px; gap: 10px; }
   .photo-trio img { height: 200px !important; }
-  .photo-hero-grid { padding: 0 20px; }
+  .photo-hero-grid { padding: 0 20px; margin-bottom: 10px; }
+  /* Fix double-nested photo-hero-grid and section padding */
+  .featured-photos { padding: 20px 0 !important; }
+  .featured-photos .photo-hero-grid .photo-hero-grid { padding: 0; margin: 0; }
+  .featured-photos img:not(.photo-trio img) { height: 220px !important; object-fit: cover !important; }
 
   .etruscan-images { grid-template-rows: 200px 200px; }
 
@@ -2622,9 +2613,6 @@ function updateNav() {
   const heroHeight = hero ? hero.offsetHeight : 600;
   const progress = Math.min(window.scrollY / (heroHeight * 0.4), 1);
 
-  // On mobile, nav stays dark always — handled by CSS
-  if (window.innerWidth <= 900) return;
-
   // Background: smokey dark rgba(10,8,5,0.45) → cream rgba(248,244,238,0.98)
   const bgR = Math.round(10  + (248 - 10)  * progress);
   const bgG = Math.round(8   + (244 - 8)   * progress);
@@ -2647,6 +2635,14 @@ function updateNav() {
   const links = nav.querySelectorAll('.nav-links a');
   if (logo) logo.style.color = `rgb(${txtR},${txtG},${txtB})`;
   links.forEach(a => { a.style.color = `rgb(${txtR},${txtG},${txtB})`; });
+
+  // Hamburger spans follow same color transition
+  const hamburger = document.getElementById('hamburgerBtn');
+  if (hamburger) {
+    hamburger.querySelectorAll('span').forEach(s => {
+      s.style.background = `rgb(${txtR},${txtG},${txtB})`;
+    });
+  }
 
   // Gold span in logo stays gold always
   const logoSpan = nav.querySelector('.nav-logo span');
