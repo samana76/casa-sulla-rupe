@@ -1456,10 +1456,28 @@ footer {
   .photo-trio { grid-template-columns: 1fr; padding: 0 20px; gap: 10px; }
   .photo-trio img { height: 200px !important; }
   .photo-hero-grid { padding: 0 20px; margin-bottom: 10px; }
-  /* Fix double-nested photo-hero-grid and section padding */
-  .featured-photos { padding: 20px 0 !important; }
-  .featured-photos .photo-hero-grid .photo-hero-grid { padding: 0; margin: 0; }
-  .featured-photos img:not(.photo-trio img) { height: 220px !important; object-fit: cover !important; }
+
+  /* Fix featured photos gap — collapse double-nested grid, fix contain→cover */
+  .featured-photos { padding: 0 !important; }
+  .featured-photos > .photo-hero-grid { padding: 0; margin: 0; }
+  .featured-photos > .photo-hero-grid > .photo-hero-grid { padding: 0; margin: 0; }
+  .featured-photos > .photo-hero-grid > .photo-hero-grid > div {
+    height: 240px !important;
+  }
+  .featured-photos > .photo-hero-grid > .photo-hero-grid img {
+    object-fit: cover !important;
+    height: 240px !important;
+  }
+  .featured-photos .photo-trio { margin-top: 10px; padding: 0; }
+
+  /* Upper floor: stack text first, images below on mobile */
+  .floor-section:first-of-type .floor-grid,
+  #upper-floor .floor-grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #upper-floor .floor-images { order: 2; }
+  #upper-floor .floor-text { order: 1; }
 
   .etruscan-images { grid-template-rows: 200px 200px; }
 
@@ -2842,7 +2860,10 @@ lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightb
 <script>
 const topBtn = document.getElementById('topBtn');
 window.addEventListener('scroll', () => {
-  topBtn.classList.toggle('visible', window.scrollY > 1000);
+  const threshold = window.innerWidth <= 900
+    ? window.innerHeight * 1.5   // mobile: appear after gold stats bar
+    : 1000;                       // desktop: after 1000px
+  topBtn.classList.toggle('visible', window.scrollY > threshold);
 });
 </script>
 
