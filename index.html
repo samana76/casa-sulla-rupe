@@ -189,12 +189,36 @@ nav.scrolled {
 .nav-logo {
   font-family: 'Playfair Display SC', serif;
   font-size: 14px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: var(--cream);
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  line-height: 1.3;
 }
 
-.nav-logo span { color: var(--gold); }
+.nav-logo-it,
+.nav-logo-en {
+  display: block;
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+
+.nav-logo-it em,
+.nav-logo-en em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+/* Active language: full opacity. Inactive: faded */
+.nav-logo.lang-en .nav-logo-en { opacity: 1; }
+.nav-logo.lang-en .nav-logo-it { opacity: 0.38; }
+.nav-logo.lang-it .nav-logo-it { opacity: 1; }
+.nav-logo.lang-it .nav-logo-en { opacity: 0.38; }
+/* Default (no class yet): both visible */
+.nav-logo:not(.lang-en):not(.lang-it) .nav-logo-it,
+.nav-logo:not(.lang-en):not(.lang-it) .nav-logo-en { opacity: 0.7; }
 
 .nav-links {
   display: flex;
@@ -1560,6 +1584,7 @@ nav.scrolled {
 }
 
 .nav-logo { color: #1A1410; transition: color 0.5s ease; }
+.nav-logo-it em, .nav-logo-en em { color: var(--gold); }
 .nav-links a { color: #7A6A58; transition: color 0.5s ease; }
 .nav-links a:hover { color: var(--gold); }
 
@@ -1926,7 +1951,10 @@ footer {
 </div>
 
 <nav id="mainNav">
-  <a href="#" class="nav-logo">Casa sulla <span>Rupe</span></a>
+  <a href="#" class="nav-logo" onclick="showLangPicker(); return false;" id="navLogo">
+    <span class="nav-logo-it" id="navLogoIt">Casa sulla <em>Rupe</em> — ITA</span>
+    <span class="nav-logo-en" id="navLogoEn">House on the <em>Rock</em> — ENG</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#upper-floor" data-key="nav-upper">Upper Floor</a></li>
     <li><a href="#lower-floor" data-key="nav-lower">Lower Floor</a></li>
@@ -1934,7 +1962,6 @@ footer {
     <li><a href="#specs" data-key="nav-details">Details</a></li>
     <li><a href="#gallery" data-key="nav-gallery">Gallery</a></li>
     <li><a href="#contact" data-key="nav-contact">Contact</a></li>
-    <li><a href="#" onclick="showLangPicker(); return false;" style="opacity:0.6;">EN / IT</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburgerBtn" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -1950,7 +1977,6 @@ footer {
   <a href="#specs" data-key="nav-details" onclick="closeDrawer()">Details</a>
   <a href="#gallery" data-key="nav-gallery" onclick="closeDrawer()">Gallery</a>
   <a href="#contact" data-key="nav-contact" onclick="closeDrawer()">Contact</a>
-  <a href="#" onclick="showLangPicker(); closeDrawer(); return false;" style="font-size:16px;letter-spacing:0.18em;font-family:'Raleway',sans-serif;color:#8B6914;">EN / IT</a>
 </div>
 
 
@@ -2647,9 +2673,11 @@ function updateNav() {
   const txtR = Math.round(245 + (26  - 245) * progress);
   const txtG = Math.round(240 + (20  - 240) * progress);
   const txtB = Math.round(232 + (16  - 232) * progress);
-  const logo = nav.querySelector('.nav-logo');
+  const logo = document.getElementById('navLogo');
   const links = nav.querySelectorAll('.nav-links a');
-  if (logo) logo.style.color = `rgb(${txtR},${txtG},${txtB})`;
+  if (logo) {
+    logo.style.color = `rgb(${txtR},${txtG},${txtB})`;
+  }
   links.forEach(a => { a.style.color = `rgb(${txtR},${txtG},${txtB})`; });
 
   // Hamburger spans follow same color transition
@@ -2660,9 +2688,10 @@ function updateNav() {
     });
   }
 
-  // Gold span in logo stays gold always
-  const logoSpan = nav.querySelector('.nav-logo span');
-  if (logoSpan) logoSpan.style.color = '#C49A3C';
+  // Gold em in logo stays gold always
+  document.querySelectorAll('.nav-logo-it em, .nav-logo-en em').forEach(el => {
+    el.style.color = '#C49A3C';
+  });
 }
 
 window.addEventListener('scroll', updateNav);
@@ -3073,6 +3102,14 @@ function applyLanguage(lang) {
   document.title = lang === 'it'
     ? 'Orvieto Casa sulla Rupe — Immobile di Lusso'
     : 'Orvieto House on the Rock — Casa sulla Rupe';
+
+  // Update nav logo active state
+  const navLogo = document.getElementById('navLogo');
+  if (navLogo) {
+    navLogo.classList.remove('lang-en', 'lang-it');
+    navLogo.classList.add('lang-' + lang);
+  }
+
   try { localStorage.setItem('lang', lang); } catch(e) {}
 }
 
