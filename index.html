@@ -296,7 +296,7 @@ nav.scrolled {
   font-weight: 400;
   line-height: 1.0;
   color: var(--cream);
-  margin-bottom: 6px;
+  margin-bottom: 32px;
 }
 
 .hero-title em {
@@ -1427,10 +1427,10 @@ footer {
 
   /* Simplify eyebrow wrapping */
   .hero-eyebrow { flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-   
+
   /* Remove "Discvoer" text and scroll indicator */
   .scroll-indicator { display: none; }
-   
+
   .hero-content { padding: 0 24px 60px; grid-template-columns: 1fr; }
   .hero-right { text-align: left; margin-top: 20px; }
   .hero-title { font-size: clamp(44px, 12vw, 72px); }
@@ -1974,8 +1974,7 @@ footer {
         <span class="hero-eyebrow-line"></span>
         <span class="eyebrow" data-key="hero-unesco">UNESCO World Heritage</span>
       </div>
-      <h1 class="hero-title">Casa sulla<br><em>Rupe</em></h1>
-      <p class="hero-subtitle" data-key="hero-subtitle">House on the Rock</p>
+      <h1 class="hero-title" data-key="hero-title">House on<br>the <em>Rock</em></h1>
       <div class="hero-stats">
         <div>
           <div class="hero-stat-val" data-key="stat-surface-val">2,336 ft²</div>
@@ -2106,7 +2105,7 @@ footer {
       </div>
       <div class="included-note">
         <div class="eyebrow" data-key="upper-incl-eyebrow">Fully Furnished &amp; Equipped</div>
-        <p>All furnishings, artwork, the painting, a Maiolica large mirror, a full range of appliances, chandeliers, linens, blankets, rugs, and dinnerware are included in the sale price.</p>
+        <p data-key="upper-incl-body">All furnishings, artwork, the painting, a Maiolica large mirror, a full range of appliances, chandeliers, linens, blankets, rugs, and dinnerware are included in the sale price.</p>
       </div>
     </div>
   </div>
@@ -2121,11 +2120,11 @@ footer {
       <div class="room-list">
         <div class="room-item">
           <div class="room-name" data-key="room-hall-name">Grand Central Hall</div>
-          <div class="room-desc" data-key="room-hall-desc">Twice the size of the upper floor. Beautiful marble floor, vaulted ceilings with crossing arches. Recessed lighting, two iron chandeliers, and a raised putti terracotta fountain in working condition. The hall is surrounded on two sides by marble stands.</div>
+          <div class="room-desc" data-key="room-hall-desc">Twice the size of the upper floor. Beautiful marble floor, vaulted ceilings with crossing arches. Recessed lighting, two iron chandeliers, and a raised putti terracotta fountain in working condition. The hall is surrounded on two sides by marble tiered steps.</div>
         </div>
         <div class="room-item">
           <div class="room-name" data-key="room-mezz-name">Mezzanine Bedroom</div>
-          <div class="room-desc" data-key="room-mezz-desc">A charming mezzanine set up as a bedroom with its own bathroom below. Accessed via the internal staircase or the main door on Via del Caccia.</div>
+          <div class="room-desc" data-key="room-mezz-desc">A charming mezzanine set up as a bedroom with its own bathroom below and accessed via a private internal staircase, or from the main hall through an archway.</div>
         </div>
         <div class="room-item">
           <div class="room-name" data-key="room-tuff-name">Tuff Arch Kitchen Area</div>
@@ -2605,10 +2604,6 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Casa sulla <span>Rupe</span> · Orvieto</div>
-  <div class="footer-reg" data-key="footer-reg">
-    VISURA — Comune di Orvieto · No. TI76549 · Foglio 181, Particella 116, Sub. 1<br>
-    Surface 2,336 ft² · Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y
-  </div>
   <div class="footer-lang" data-key="footer-lang">
     <a href="#" onclick="showLangPicker(); return false;">Change Language / Cambia Lingua</a>
   </div>
@@ -2884,7 +2879,7 @@ const TRANSLATIONS = {
     'nav-contact': 'Contact',
     'hero-location': 'Orvieto · Umbria · Italy',
     'hero-unesco': 'UNESCO World Heritage',
-    'hero-subtitle': 'House on the Rock',
+    'hero-title': 'House on<br>the <em>Rock</em>',
     'stat-surface-lbl': 'Total Surface',
     'stat-surface-val': '2,336 ft²',
     'stat-floors-lbl': 'Living Floors',
@@ -2915,12 +2910,13 @@ const TRANSLATIONS = {
     'room-bath-name': 'Bathroom &amp; Bedroom',
     'room-bath-desc': 'Bathroom with shower and an elegantly furnished bedroom completing the upper level.',
     'upper-incl-eyebrow': 'Fully Furnished &amp; Equipped',
+    'upper-incl-body': 'All furnishings, artwork, the painting, a Maiolica large mirror, a full range of appliances, chandeliers, linens, blankets, rugs, and dinnerware are included in the sale price.',
     'lower-address': 'Via del Caccia No. 9',
     'lower-heading': 'The Lower<br>Floor',
     'room-hall-name': 'Grand Central Hall',
-    'room-hall-desc': 'Twice the size of the upper floor. Beautiful marble floor, vaulted ceilings with crossing arches. Recessed lighting, two iron chandeliers, and a raised putti terracotta fountain in working condition. The hall is surrounded on two sides by marble stands.',
+    'room-hall-desc': 'Twice the size of the upper floor. Beautiful marble floor, vaulted ceilings with crossing arches. Recessed lighting, two iron chandeliers, and a raised putti terracotta fountain in working condition. The hall is surrounded on two sides by marble tiered steps.',
     'room-mezz-name': 'Mezzanine Bedroom',
-    'room-mezz-desc': 'A charming mezzanine set up as a bedroom with its own bathroom below. Accessed via the internal staircase or the main door on Via del Caccia.',
+    'room-mezz-desc': 'A charming mezzanine set up as a bedroom with its own bathroom below and accessed via a private internal staircase, or from the main hall through an archway.',
     'room-tuff-name': 'Tuff Arch Kitchen Area',
     'room-tuff-desc': 'A natural tuff arch with an area that could be used as a second kitchen — plumbing already in place.',
     'room-inscr-name': 'Etruscan Inscription',
@@ -2965,7 +2961,6 @@ const TRANSLATIONS = {
     'registry-note': 'Registry (Visura) — Comune di Orvieto · No.: TI76549<br>Catasto Fabbricati — Sheet 181, Parcel 116, Sub. 1<br>Cadastral surface: 2,336 ft² (217 m²)<br>Owner: SAVIO Giovanni · Tax Code: SVAGNN41L25H710Y',
     'gallery-eyebrow': 'Photography',
     'gallery-heading': 'Photo<br>Gallery',
-    'footer-reg': 'VISURA — Comune di Orvieto · No. TI76549 · Foglio 181, Particella 116, Sub. 1<br>Surface 2,336 ft² · Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y',
     'footer-lang': '<a href="#" onclick="showLangPicker(); return false;">Cambia Lingua / Change Language</a>',
   },
   it: {
@@ -2977,7 +2972,7 @@ const TRANSLATIONS = {
     'nav-contact': 'Contatto',
     'hero-location': 'Orvieto · Umbria · Italia',
     'hero-unesco': 'Patrimonio UNESCO',
-    'hero-subtitle': 'La Casa sulla Rupe',
+    'hero-title': 'Casa sulla<br><em>Rupe</em>',
     'stat-surface-lbl': 'Superficie Totale',
     'stat-surface-val': '217 m²',
     'stat-floors-lbl': 'Piani Abitativi',
@@ -3006,14 +3001,15 @@ const TRANSLATIONS = {
     'room-kitchen-name': 'Cucina',
     'room-kitchen-desc': 'Cucina attrezzata che attraverso un corridoio conduce al bagno e alla camera da letto.',
     'room-bath-name': 'Bagno e Camera da Letto',
-    'room-bath-desc': 'Bagno con doccia e camera da letto ben arredata, che completano il piano superiore.',
-    'upper-incl-eyebrow': 'Completamente Arredato e Attrezzato',
+    'room-bath-desc': 'Bagno con doccia e camera da letto ben arredata completano il piano superiore.',
+    'upper-incl-eyebrow': 'Casa Completamente Arredata e Attrezzata',
+    'upper-incl-body': 'Il dipinto, lo specchio in maiolica, tutta la mobilia, elettrodomestici (frigo, forno, lavastoviglie, lavatrice, asciugatrice), lampadari, lenzuola, coperte, tappeti, stoviglie, ecc. sono inclusi nel prezzo di vendita.',
     'lower-address': 'Via del Caccia N. 9',
     'lower-heading': 'Il Piano<br>Inferiore',
     'room-hall-name': 'Grande Salone Centrale',
     'room-hall-desc': 'Il doppio dello spazio del piano superiore. Pavimentazione in marmo, soffitti a volta con archi trasversali. Illuminazione incassata, due lampadari in ferro e una fontana in terracotta con putti a rilievo, decorativa e funzionale. Circondato su due lati da gradinate in marmo.',
     'room-mezz-name': 'Soppalco Camera da Letto',
-    'room-mezz-desc': "Suggestivo soppalco adibito a camera da letto con bagno con vasca al piano di sotto. Accessibile dalla scala interna o dall'ingresso di Via del Caccia.",
+    'room-mezz-desc': "Suggestivo soppalco adibito a camera da letto con bagno con vasca al piano di sotto. Questo bagno è accessibile dal Soppalco tramite scala interna oppure dal salone attraverso un ingresso ad arco.",
     'room-tuff-name': 'Arco in Tufo — Cucina',
     'room-tuff-desc': 'Un arco in tufo porta a uno spazio predisposto per eventuale uso cucina, con tubazioni già presenti.',
     'room-inscr-name': 'Iscrizione Etrusca',
@@ -3058,7 +3054,6 @@ const TRANSLATIONS = {
     'registry-note': 'VISURA — Comune di Orvieto · N. TI76549<br>Catasto Fabbricati — Foglio 181, Particella 116, Sub. 1<br>Superficie catastale: 217 m²<br>Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y',
     'gallery-eyebrow': 'Fotografie',
     'gallery-heading': 'Galleria<br>Fotografica',
-    'footer-reg': 'VISURA — Comune di Orvieto · N. TI76549 · Foglio 181, Particella 116, Sub. 1<br>Superficie 217 m² · Proprietario: SAVIO Giovanni · Cod. F.: SVAGNN41L25H710Y',
     'footer-lang': '<a href="#" onclick="showLangPicker(); return false;">Change Language / Cambia Lingua</a>',
   }
 };
