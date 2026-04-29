@@ -2659,7 +2659,7 @@ function updateNav() {
   const bgR = Math.round(10  + (248 - 10)  * progress);
   const bgG = Math.round(8   + (244 - 8)   * progress);
   const bgB = Math.round(5   + (238 - 5)   * progress);
-  const bgA = Math.round((0.65 + (0.98 - 0.45) * progress) * 100) / 100;
+  const bgA = Math.round((0.65 + (0.98 - 0.65) * progress) * 100) / 100;
   nav.style.background = `rgba(${bgR},${bgG},${bgB},${bgA})`;
 
   // Border: invisible → subtle gold
